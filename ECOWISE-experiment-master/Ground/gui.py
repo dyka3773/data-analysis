@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Jul 19 19:39:51 2020
 
-@author: vayos
-"""
 from tkinter import *
 import tkinter as tk
 from tkinter import StringVar, IntVar
