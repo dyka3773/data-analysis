@@ -6,7 +6,7 @@ import threading
 import os
 
 
-class Logger(ABC):
+class Logger(ABC):    
 
     def __init__(self, filename):
         self.lock = threading.Lock()
