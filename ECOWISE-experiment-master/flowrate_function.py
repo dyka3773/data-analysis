@@ -8,25 +8,61 @@ Created on Wed Mar  3 21:48:25 2021
 
 import numpy as np
 
+class Methods:
+
+    #θεωρώ ότι τα στοιχεία στα arrays έχουν παρθεί ανά dt γνωστό, άρα time[j]=j*dt
+    dt=2   #sec
+
+    def __init__(self,pressin,pressout,tempin,tempout,t):
+        #τα αντίστοιχα δεδομένα μέσα και έξω και οι γνωστές ποσότητες
+        self.pressin=np.array()
+        self.pressout=np.array()
+
+        self.tempin=np.array()
+        self.tempout=np.array()
+
+        self.vin=2  #lit
+
+        self.time=np.array()
 
 
-"""τα αντίστοιχα δεδομένα μέσα και έξω και οι γνωστές ποσότητες"""
+    #η συνάρτηση παροχής
+    def flowrate(self):
+        j=self.t/self.dt
+        dpin=self.pressin[j+1]-self.pressin[j]
+        dtin=self.tempin[j+1]-self.tempin[j]
+        
+        pout=(self.pressout[j+1]+self.pressout[j])/2
+        pin=(self.pressin[j+1]+self.pressin[j])/2
+        
+        tout=(self.tempout[j+1]+self.tempout[j])/2
+        tin=(self.tempin[j+1]+self.tempin[j])/2
+        
+        flow=(vin/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)
+        return flow
+
+
+##################### Το παραπάνω είναι η σωστή τεχνική #####################
+
+"""
+
+#τα αντίστοιχα δεδομένα μέσα και έξω και οι γνωστές ποσότητες
 pressin=np.array()
 pressout=np.array()
 
 tempin=np.array()
 tempout=np.array()
 
-vin=2  """lit"""
+vin=2  #lit
 
 time=np.array()
 
-"""θεωρώ ότι τα στοιχεία στα arrays έχουν παρθεί ανά dt γνωστό, άρα time[j]=j*dt"""
-dt=2   """sec"""
+#θεωρώ ότι τα στοιχεία στα arrays έχουν παρθεί ανά dt γνωστό, άρα time[j]=j*dt
+dt=2   #sec
 
 
 
-"""η συνάρτηση παροχής"""
+#η συνάρτηση παροχής
 def flowrate(pressin,pressout,tempin,tempout,t):
     j=t/dt
     dpin=pressin[j+1]-pressin[j]
@@ -41,4 +77,4 @@ def flowrate(pressin,pressout,tempin,tempout,t):
     flow=(vin/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)
     return flow
 
-
+"""
