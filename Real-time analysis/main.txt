@@ -1,0 +1,9 @@
+pandas διαχειριση csv
+import ./plots
+
+εισαγωγη δεδομένων στην methods
+εξαγωγή δεδομένων για τα plots
+
+εισαγει δεδομενα σε plots
+καλεί plots.py
+φτυνει plots στο gui

@@ -13,22 +13,20 @@ class Methods:
     #θεωρώ ότι τα στοιχεία στα arrays έχουν παρθεί ανά dt γνωστό, άρα time[j]=j*dt
     dt=2   #sec
 
-    def __init__(self,pressin,pressout,tempin,tempout,t):
+    def __init__(self,pressin,pressout,tempin,tempout):
         #τα αντίστοιχα δεδομένα μέσα και έξω και οι γνωστές ποσότητες
-        self.pressin=np.array()
-        self.pressout=np.array()
+        self.pressin=np.array(pressin)
+        self.pressout=np.array(pressout)
 
-        self.tempin=np.array()
-        self.tempout=np.array()
+        self.tempin=np.array(tempin)
+        self.tempout=np.array(tempout)
 
-        self.vin=2  #lit
-
-        self.time=np.array()
+        self.vin=2  #litre
 
 
     #η συνάρτηση παροχής
-    def flowrate(self):
-        j=self.t/self.dt
+    def flowrate(self, t):
+        j=t/self.dt
         dpin=self.pressin[j+1]-self.pressin[j]
         dtin=self.tempin[j+1]-self.tempin[j]
         
@@ -43,8 +41,8 @@ class Methods:
 
 
 ##################### Το παραπάνω είναι η σωστή τεχνική #####################
+
 # =============================================================================
-# 
 # #τα αντίστοιχα δεδομένα μέσα και έξω και οι γνωστές ποσότητες
 # pressin=np.array()
 # pressout=np.array()
@@ -55,8 +53,6 @@ class Methods:
 # vin=2  #lit
 # 
 # time=np.array()
-# 
-# #θεωρώ ότι τα στοιχεία στα arrays έχουν παρθεί ανά dt γνωστό, άρα time[j]=j*dt
 # dt=2   #sec
 # 
 # 
@@ -75,5 +71,6 @@ class Methods:
 #     
 #     flow=(vin/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)
 #     return flow
-#
+# 
 # =============================================================================
+

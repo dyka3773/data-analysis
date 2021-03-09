@@ -21,3 +21,5 @@ for i in range(1000):
     
     print(suma)
     suma=0
+
+
