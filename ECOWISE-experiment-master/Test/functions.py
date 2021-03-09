@@ -18,5 +18,6 @@ for i in range(1000):
     for i in range(len(s)-1):
     print(f((s[i+1]+s[i])/2))
     """
+    
     print(suma)
     suma=0
