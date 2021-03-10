@@ -1,6 +1,0 @@
-import matplotlib
-
-
-παιρνει δεδομένα απο την main
-
-return plt
