@@ -7,7 +7,7 @@ Created on Wed Mar 10 13:20:54 2021
 import pandas as pd
 
 import plot_handler
-import Methods.flowrate_function
+from methods import Methods
 
 def import_data():
     data = pd.read_csv('./Sample CSV.csv', header=None, usecols=[0,1,2,3,4,5,6,7,8,9],
@@ -50,12 +50,26 @@ def import_data():
 
 P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude, time = import_data()
 
-for i in time:
+for i in time: #just testing that it works
     print(i)
 
+#inserting data to Methods to get results ready for plots
+#NOTE THAT: time isn't inserted as we might need a different or special time for each function
+data_to_plot = Methods(P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude)
+
+
+#using Methods' methods to get the requested results
+flow = data_to_plot.flowrate(time)
+
+
+
+#let's say we need a plot of how P_in & P_out change over time
+plot_1 = plot_handler.create_plot_type1(P_in, P_out, time)
+
  # ==============================================================================
- # pandas διαχειριση csv
  # import ./plots
+ # 
+ # pandas διαχειριση csv
  #
  # εισαγωγη δεδομένων στην methods
  # εξαγωγή δεδομένων για τα plots
@@ -64,4 +78,3 @@ for i in time:
  # καλεί plots.py
  # φτυνει plots στο gui
  # ==============================================================================
- 

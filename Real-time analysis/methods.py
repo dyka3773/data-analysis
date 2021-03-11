@@ -13,13 +13,21 @@ class Methods:
     #θεωρώ ότι τα στοιχεία στα arrays έχουν παρθεί ανά dt γνωστό, άρα time[j]=j*dt
     dt=2   #sec
 
-    def __init__(self,pressin,pressout,tempin,tempout):
+    def __init__(self,P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude):
         #τα αντίστοιχα δεδομένα μέσα και έξω και οι γνωστές ποσότητες
-        self.pressin=np.array(pressin)
-        self.pressout=np.array(pressout)
+        self.P_in=np.array(P_in)
+        self.P_out=np.array(P_out)
 
-        self.tempin=np.array(tempin)
-        self.tempout=np.array(tempout)
+        self.T_in=np.array(T_in)
+        self.T_out=np.array(T_out)
+        
+        self.Hum_in = np.array(Hum_in)
+        self.Hum_out = np.array(Hum_out)
+        
+        self.CO2_V = np.array(CO2_V)
+        self.O3_V = np.array(O3_V)
+        
+        self.Altitude = np.array(Altitude)
 
         self.vin=2  #litre
 
@@ -27,14 +35,15 @@ class Methods:
     #η συνάρτηση παροχής
     def flowrate(self, t):
         j=t/self.dt
-        dpin=self.pressin[j+1]-self.pressin[j]
-        dtin=self.tempin[j+1]-self.tempin[j]
         
-        pout=(self.pressout[j+1]+self.pressout[j])/2
-        pin=(self.pressin[j+1]+self.pressin[j])/2
+        dpin=self.P_in[j+1]-self.P_in[j]
+        dtin=self.T_in[j+1]-self.T_in[j]
         
-        tout=(self.tempout[j+1]+self.tempout[j])/2
-        tin=(self.tempin[j+1]+self.tempin[j])/2
+        pout=(self.P_out[j+1]+self.P_out[j])/2
+        pin=(self.P_in[j+1]+self.P_in[j])/2
+        
+        tout=(self.T_out[j+1]+self.T_out[j])/2
+        tin=(self.T_in[j+1]+self.T_in[j])/2
         
         flow=(self.vin/pout)*(tout/tin)*(dpin/self.dt-(pin/tin)*dtin/self.dt)
         return flow
