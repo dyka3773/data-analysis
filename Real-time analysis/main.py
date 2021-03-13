@@ -57,14 +57,12 @@ for i in time: #just testing that it works
 #NOTE THAT: time isn't inserted as we might need a different or special time for each function
 data_to_plot = Methods(P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude)
 
-
 #using Methods' methods to get the requested results
 flow = data_to_plot.flowrate(time)
 
 
-
-#let's say we need a plot of how P_in & P_out change over time
-plot_1 = plot_handler.create_plot_type1(P_in, P_out, time)
+#Exemplary plot_handler for Humidity
+plot_1 = plot_handler.humidity_plot(Hum_in, Hum_out)
 
  # ==============================================================================
  # import ./plots
