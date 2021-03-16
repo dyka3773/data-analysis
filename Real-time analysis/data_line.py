@@ -4,6 +4,8 @@ Created on Tue Mar 16 18:24:20 2021
 
 @author: Herck
 """
+import numpy as np
+
 class data_line:
     
     def __init__(self,P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude,time):
@@ -28,12 +30,15 @@ class data_line:
         
     @property
     def CO2Concetration(CO2_V1,CO2_V2,T_in):
-      
-        # I somehow calculate NRcomp & Scomp     
+        a= 1.52
+        n= 0.724 # linearization coefficients υπολογιστουν στα tests
+        
+        # I somehow calculate NRcomp & Scomp
+        NRcomp=0
+        Scomp=0
           
-        # Conc= ((-1/a)*np.ln(1-NRcomp/Scomp)) **(1/n))
-        # return Conc
-        pass
+        Conc= ((-1/a)*np.ln(1-NRcomp/Scomp)) **(1/n)
+        return Conc
     
     @property
     def O3Concetration(CO2_V1,CO2_V2,T_in):
