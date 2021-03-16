@@ -343,7 +343,8 @@ if __name__ == "__main__":
     button16.grid(row=8, column=2, ipadx='10')
 
     # figure represents the graphic part of the system
-    """figure = Figure(figsize=(5, 3), facecolor='pink', frameon=True)
+    """
+    figure = Figure(figsize=(5, 3), facecolor='pink', frameon=True)
     figure1 = Figure(figsize=(5, 3), facecolor='pink', frameon=True)
     #figure2 = Figure(figsize=(4, 3), facecolor='pink', frameon=True)
     #figure.add_gridspec(10,10)
@@ -357,7 +358,8 @@ if __name__ == "__main__":
 
     newAnimation = c.nt(figure)
     newAnimation1 = c.nt1(figure1)
-    #newAnimation2 = c.nt2(figure2)"""
+    #newAnimation2 = c.nt2(figure2)
+    """
 
     # Update values
     root.after(1000, updateValues)

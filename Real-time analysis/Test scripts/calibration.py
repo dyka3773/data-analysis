@@ -26,9 +26,9 @@ def import2_data():
         Scomp= data2['Scomp'].values
         Scomp= Scomp[1:]
         
-        return CO2_V1,CO2_V2,NRcomp,Scomp
+        return CO2_V1, CO2_V2, NRcomp, Scomp
     
-    CO2_V1,CO2_V2,NRcomp,Scomp = import2_data()
+    CO2_V1, CO2_V2, NRcomp, Scomp = import2_data()
     
 class Calibration: #Θα εχει μαλλον υπολογισμο NRcomp,Scomp αντι για import, πρεπει πρωτα ομως να γινει temperature compensation 
     
@@ -53,7 +53,14 @@ class Calibration: #Θα εχει μαλλον υπολογισμο NRcomp,Scomp
        return Conc
       
        
-
+# =============================================================================
+# def CO2Concetration(CO2_V1,CO2_V2,T_in):
+#      
+#     I somehow calculate NRcomp & Scomp     
+#      
+#     Conc= ((-1/a)*np.ln(1-NRcomp[j]/Scomp[j])) **(1/n))
+#     return Conc
+# =============================================================================
     
     
     

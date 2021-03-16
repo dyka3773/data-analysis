@@ -4,63 +4,31 @@ Created on Wed Mar  3 21:48:25 2021
 
 @author: iliodis
 """
+V_in = 2
+dt = 2
 
-
-import numpy as np
-
-class Methods:
-
-    #θεωρώ ότι τα στοιχεία στα arrays έχουν παρθεί ανά dt γνωστό, άρα time[j]=j*dt
-    dt=2   #sec
-
-    def __init__(self,P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude):
-        #τα αντίστοιχα δεδομένα μέσα και έξω και οι γνωστές ποσότητες
-        self.P_in=np.array(P_in)
-        self.P_out=np.array(P_out)
-
-        self.T_in=np.array(T_in)
-        self.T_out=np.array(T_out)
-        
-        self.Hum_in = np.array(Hum_in)
-        self.Hum_out = np.array(Hum_out)
-        
-        self.CO2_V = np.array(CO2_V)
-        self.O3_V = np.array(O3_V)
-        
-        self.Altitude = np.array(Altitude)
-
-        self.vin=2  #litre
-
-
-    #η συνάρτηση παροχής
-    def flowrate(self, t):
-        j=t/self.dt
-        
-        dpin=self.P_in[j+1]-self.P_in[j]
-        dtin=self.T_in[j+1]-self.T_in[j]
-        
-        pout=(self.P_out[j+1]+self.P_out[j])/2
-        pin=(self.P_in[j+1]+self.P_in[j])/2
-        
-        tout=(self.T_out[j+1]+self.T_out[j])/2
-        tin=(self.T_in[j+1]+self.T_in[j])/2
-        
-        flow=(self.vin/pout)*(tout/tin)*(dpin/self.dt-(pin/tin)*dtin/self.dt)
-        return flow
+#η συνάρτηση παροχής
+def flowrate(P_in, T_in, P_out, T_out, t):
+    j=t/dt
     
-    #Συνάρτηση υπολογισμού Συγκέντρωσης Διοξειδίου
-    def CO2_Concentration(self,t):
-        pass
+    dpin=P_in[j+1]-P_in[j]
+    dtin=T_in[j+1]-T_in[j]
     
-    #Συνάρτηση υπολογισμού Συγκέντρωσης Όζοντος
-    def O3_Concentration(self,t):
-        pass
+    pout=(P_out[j+1]+P_out[j])/2
+    pin=(P_in[j+1]+P_in[j])/2
+    
+    tout=(T_out[j+1]+T_out[j])/2
+    tin=(T_in[j+1]+T_in[j])/2
+    
+    flow=(V_in/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)
+    return flow
 
-    #Ο τρόπος που θα υπολογίζουμε το κέντρο μάζας
-    def Center_of_Mass(self):
-        #δεν ξέρω τι πρέπει να μπαίνει παραμετρικά γιατι δε ξέρω τι χρειάζεται για να υπολογιστεί αυτό
-        pass
-    
+
+#Ο τρόπος που θα υπολογίζουμε το κέντρο μάζας
+def Center_of_Mass():
+    #δεν ξέρω τι πρέπει να μπαίνει παραμετρικά γιατι δε ξέρω τι χρειάζεται για να υπολογιστεί αυτό
+    pass
+
     
 ##################### Το παραπάνω είναι η σωστή τεχνική #####################
 

@@ -7,7 +7,8 @@ Created on Wed Mar 10 13:20:54 2021
 import pandas as pd
 
 import plot_handler
-from methods import Methods
+import methods
+from data_line import data_line
 
 def import_data():
     data = pd.read_csv('./Sample CSV.csv', header=None, usecols=[0,1,2,3,4,5,6,7,8,9],
@@ -55,10 +56,10 @@ for i in time: #just testing that it works
 
 #inserting data to Methods to get results ready for plots
 #NOTE THAT: time isn't inserted as we might need a different or special time for each function
-data_to_plot = Methods(P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude)
+data_to_plot = data_line(P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude)
 
 #using Methods' methods to get the requested results
-flow = data_to_plot.flowrate(time)
+flow = methods.flowrate(P_in, T_in, P_out, T_out, time)
 
 
 #Exemplary plot_handler for Humidity
