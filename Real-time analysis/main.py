@@ -48,22 +48,26 @@ def import_data():
     return P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude, time
 
 
+def main():
+    P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude, time = import_data()
+    
+    
+    #inserting data to Methods to get results ready for plots
+    #NOTE THAT: time isn't inserted as we might need a different or special time for each function
+    data_to_plot = data_line(P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude)
+    
+    #using Methods' methods to get the requested results
+    flow = methods.flowrate(P_in, T_in, P_out, T_out, time)
+    
+    
+    #Exemplary plot_handler for Humidity
+    plot_1 = plot_handler.humidity_plot(Hum_in, Hum_out)
 
-P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude, time = import_data()
-
-for i in time: #just testing that it works
-    print(i)
-
-#inserting data to Methods to get results ready for plots
-#NOTE THAT: time isn't inserted as we might need a different or special time for each function
-data_to_plot = data_line(P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude)
-
-#using Methods' methods to get the requested results
-flow = methods.flowrate(P_in, T_in, P_out, T_out, time)
 
 
-#Exemplary plot_handler for Humidity
-plot_1 = plot_handler.humidity_plot(Hum_in, Hum_out)
+
+if __name__=="__main__":
+    main()
 
  # ==============================================================================
  # import ./plots
