@@ -30,6 +30,7 @@ class data_line:
         
     @property
     def CO2Concetration(CO2_V1,CO2_V2,T_in):
+        
         a= 1.52
         n= 0.724 # linearization coefficients υπολογιστουν στα tests
         
