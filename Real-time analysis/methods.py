@@ -8,17 +8,17 @@ V_in = 2
 dt = 2
 
 #η συνάρτηση παροχής
-def flowrate(P_in, T_in, P_out, T_out, t):
-    j=t/dt
+def flowrate(df):
+    j=df['time']/dt
     
-    dpin=P_in[j+1]-P_in[j]
-    dtin=T_in[j+1]-T_in[j]
+    dpin=df.P_in[j+1]-df.P_in[j]
+    dtin=df.T_in[j+1]-df.T_in[j]
     
-    pout=(P_out[j+1]+P_out[j])/2
-    pin=(P_in[j+1]+P_in[j])/2
+    pout=(df.P_out[j+1]+df.P_out[j])/2
+    pin=(df.P_in[j+1]+df.P_in[j])/2
     
-    tout=(T_out[j+1]+T_out[j])/2
-    tin=(T_in[j+1]+T_in[j])/2
+    tout=(df.T_out[j+1]+df.T_out[j])/2
+    tin=(df.T_in[j+1]+df.T_in[j])/2
     
     flow=(V_in/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)
     return flow
@@ -30,7 +30,7 @@ def flowrate(P_in, T_in, P_out, T_out, t):
 
 #Υπολογισμός m_tot
 
-def centre_of_mass(data): #Το όρισμα θα είναι ένας πίνακας με όλες τις στήλες δεδομένων από μία χρονική στιγμή έως μία άλλη
+def centre_of_mass(data, flow): #Το όρισμα θα είναι ένας πίνακας με όλες τις στήλες δεδομένων από μία χρονική στιγμή έως μία άλλη
     
     
     "ΠΡΩΤΑ ΥΠΟΛΟΓΙΖΩ ΤΟ MTOT"

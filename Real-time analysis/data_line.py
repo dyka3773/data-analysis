@@ -8,19 +8,10 @@ import numpy as np
 
 class data_line:
     
-    def __init__(self,P_in, P_out, T_in, T_out, Hum_in, Hum_out, CO2_V, O3_V, Altitude,time):
-        #τα αντίστοιχα δεδομένα μέσα και έξω και οι γνωστές ποσότητες
-        self.P_in=P_in
-        self.P_out=P_out
-        self.T_in=T_in
-        self.T_out=T_out
-        self.Hum_in = Hum_in
-        self.Hum_out = Hum_out
-        self.CO2_V = CO2_V
-        self.O3_V = O3_V        
-        self.Altitude = Altitude
-        self.time=time
-
+    def __init__(self,df):
+        #τα αντίστοιχα δεδομένα μέσα και έξω και οι γνωστές ποσότητες ως DataFrame
+        self.df = df
+        
 # =============================================================================
 #       Will this ever Change?
 #         
@@ -29,7 +20,11 @@ class data_line:
     
         
     @property
-    def CO2Concetration(CO2_V1,CO2_V2,T_in):
+    def CO2Concetration(self):
+        
+        CO2_V1 = self.df.CO2_V1
+        CO2_V2 = self.df.CO2_V2
+        T_in = self.df.T_in
         
         a= 1.52
         n= 0.724 # linearization coefficients υπολογιστουν στα tests
@@ -42,7 +37,11 @@ class data_line:
         return Conc
     
     @property
-    def O3Concetration(CO2_V1,CO2_V2,T_in):
-      
+    def O3Concetration(self):
+        
+        O3_V1 = self.df.O3_V1
+        O3_V2 = self.df.O3_V2
+        T_in = self.df.T_in
+        
         # Calculating O3
         pass

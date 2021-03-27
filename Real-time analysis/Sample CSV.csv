@@ -1,4 +1,4 @@
-P_in,P_out,T_in,T_out,Hum_in,Hum_out,CO2_V1,CO2_V2,O3_V,Altitude,time (s),Flow (binary),Flowrate,CO2_C,O3_C,center of mass,SB_Temp
+P_in,P_out,T_in,T_out,Hum_in,Hum_out,CO2_V1,CO2_V2,O3_V,Altitude,time,Flow (binary),Flowrate,CO2_C,O3_C,center of mass,SB_Temp
 1000,1000,5,5,,,,,,0,0,1,flowrate(time),,,,Pump_Temp
 999,999,5,5,,,,,,5,2,,flowrate(time),,,1,In_Temp
 998,998,5,5,,,,,,10,4,,flowrate(time),,,,Out_Temp
