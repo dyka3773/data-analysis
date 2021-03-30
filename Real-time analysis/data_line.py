@@ -33,7 +33,7 @@ class data_line:
         NRcomp=0
         Scomp=0
           
-        Conc= ((-1/a)*np.ln(1-NRcomp/Scomp)) **(1/n)
+        Conc= ((-1/a)*np.log(1-NRcomp/Scomp)) **(1/n) #np.log logarithm is logarithm in base e
         return Conc
     
     @property
