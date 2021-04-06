@@ -7,21 +7,49 @@ Created on Wed Mar  3 21:48:25 2021
 V_in = 2
 dt = 2
 
+# =============================================================================
+# def flowrate(df):
+#     flow_rate=[]
+#     
+#     for j in df['time']:
+#         dpin=df.loc[j+2, 'P_in']-df.P_in[j]
+#         dtin=df.T_in[j+1]-df.T_in[j]
+#         
+#         pout=(df.P_out[j+1]+df.P_out[j])/2
+#         pin=(df.P_in[j+1]+df.P_in[j])/2
+#         
+#         tout=(df.T_out[j+1]+df.T_out[j])/2
+#         tin=(df.T_in[j+1]+df.T_in[j])/2
+#         
+#         flow=(V_in/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)
+#         flow_rate.append(flow)
+#         
+#     return flow_rate
+# =============================================================================
 #η συνάρτηση παροχής
 def flowrate(df):
-    j=df['time']/dt
+    flow_rate=[]
+    j=0
     
-    dpin=df.P_in[j+1]-df.P_in[j]
-    dtin=df.T_in[j+1]-df.T_in[j]
-    
-    pout=(df.P_out[j+1]+df.P_out[j])/2
-    pin=(df.P_in[j+1]+df.P_in[j])/2
-    
-    tout=(df.T_out[j+1]+df.T_out[j])/2
-    tin=(df.T_in[j+1]+df.T_in[j])/2
-    
-    flow=(V_in/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)
-    return flow
+    for k in df['time']:
+        dt = df.loc[j+1, 'time'] - k
+        
+        dpin=df.loc[j+1, 'P_in']-df.loc[j, 'P_in']
+        dtin=df.loc[j+1, 'T_in']-df.loc[j, 'T_in']
+        
+        pout=(df.loc[j+1, 'P_out']+df.loc[j, 'P_out'])/2
+        pin=(df.loc[j+1, 'P_in']+df.loc[j, 'P_in'])/2
+        
+        tout=(df.loc[j+1, 'T_out']+df.loc[j, 'T_out'])/2
+        tin=(df.loc[j+1, 'T_in']+df.loc[j, 'T_in'])/2
+        
+        flow=(V_in/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)
+        
+        flow_rate.append(flow)
+        
+        j+=1
+        
+    return flow_rate
 
 
 #Ο τρόπος που θα υπολογίζουμε το κέντρο μάζας

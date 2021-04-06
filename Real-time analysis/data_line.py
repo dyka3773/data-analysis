@@ -6,8 +6,9 @@ Created on Tue Apr  6 11:55:43 2021
 """
 import numpy as np
 
+
 def O3Concentration(df):
-    O3_WE = df.O3_WE # νομιζω πρεπει να φτιαχτουν
+    O3_WE = df.O3_WE
     O3_AE = df.O3_AE
     T_in = df.T_in  # σημαντικη για τις τιμες που θα χρησιμοποιηθουν στις σταθερες
     
