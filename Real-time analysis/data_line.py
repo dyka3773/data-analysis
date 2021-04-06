@@ -1,26 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Mar 16 18:24:20 2021
+Created on Tue Apr  6 11:55:43 2021
 
 @author: Herck
 """
 import numpy as np
 
-class data_line:
+class data_line():
     
     def __init__(self,df):
         #τα αντίστοιχα δεδομένα μέσα και έξω και οι γνωστές ποσότητες ως DataFrame
-        self.df = df
+        self.df=df
         
 # =============================================================================
 #       Will this ever Change?
 #         
 #       self.V_in=2  #litre
-# =============================================================================
-    
-    @property    
-    def O3Concetration(self):
-        
+# =============================================================================      
+
+    @property
+    def O3Concentration(self):
         O3_WE = self.df.O3_WE # νομιζω πρεπει να φτιαχτουν
         O3_AE = self.df.O3_AE
         T_in = self.df.T_in  # σημαντικη για τις τιμες που θα χρησιμοποιοηθουν στις σταθερες
@@ -33,10 +32,9 @@ class data_line:
         
         """Fitting & a=a(T_in)"""
         return b * WEc     
-    
+
     @property
-    def CO2Concetration(self):
-        
+    def CO2Concentration(self):
         CO2_V1 = self.df.CO2_V1
         CO2_V2 = self.df.CO2_V2
         T_in = self.df.T_in
@@ -55,15 +53,15 @@ class data_line:
         
         NR = CO2_V1/(Z*CO2_V2)
         
-        if T_in > Tcal:
+        if (T_in>Tcal):
             NRcomp = NR*(1+apos*(T_in-Tcal))
             Scomp = S + bpos*(T_in-Tcal)/Tcal
         else:
-            NRcomp = NR*(1+neg*(T_in-Tcal))
+            NRcomp = NR*(1+aneg*(T_in-Tcal))
             Scomp = S + bneg*(T_in-Tcal)/Tcal
         
         if (1 - NRcomp > 0):
-            return ((-1/a)*np.log(1-(1-NRcomp)/Scomp)) **(1/n)
+            result = ((-1/a)*np.log(1-(1-NRcomp)/Scomp)) **(1/n)
         else:
-            return -((-1/a)*np.log((1-(1-NRcomp)*(-1)/Scomp)) **(1/n)
-            # το ειδα στις οδηγιες, αν δε το θυμηθω πες να το συζητησουμε
+            result = -((-1/a)*np.log(1-(1-NRcomp)*(-1/Scomp))) **(1/n)
+        return result
