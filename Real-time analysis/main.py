@@ -8,19 +8,18 @@ import pandas as pd
 
 import plot_handler
 import methods
-from data_line import data_line
+import data_line
 
 def main():
-    df = pd.read_csv('./Sample CSV.csv', index_col=0, usecols=[0,1,2,3,4,5,6,7,8,9,10,11])
+    df = pd.read_csv('./Sample CSV.csv', usecols=[0,1,2,3,4,5,6,7,8,9,10,11])
+    
+    df['O3Concentration'] = df.apply(data_line.O3Concentration, axis=1)
+    df['CO2Concentration'] = df.apply(data_line.CO2Concentration, axis=1)
     
     print(df)
     
-    #inserting data to Methods to get results ready for plots
-    #NOTE THAT: time isn't inserted as we might need a different or special time for each function
-    last_line = data_line(df.tail(1))
-    
-    #using Methods' methods to get the requested results
-    flow = methods.flowrate(df[['P_in', 'T_in', 'P_out', 'T_out', 'time']])
+    # #using Methods' methods to get the requested results
+    # flow = methods.flowrate(df[['P_in', 'T_in', 'P_out', 'T_out', 'time']])
     
     
     #Exemplary plot_handler for Humidity
