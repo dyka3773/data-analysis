@@ -15,8 +15,8 @@ def main():
     
     df['O3_ppm'] = df.apply(data_line.O3Concentration, axis=1)
     df['CO2_%v/v'] = df.apply(data_line.CO2Concentration, axis=1)
+    df['Flowrate'] = methods.flowrate(df)
     
-    # print(methods.flowrate(df))
     
 # =============================================================================
 #     Check names and units

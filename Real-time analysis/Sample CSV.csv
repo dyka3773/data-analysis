@@ -1,7 +1,7 @@
 time,P_in,P_out,T_in,T_out,Hum_in,Hum_out,CO2_V1,CO2_V2,O3_WE,O3_AE,Altitude,Flow (binary),Flowrate,CO2_C,O3_C,center of mass,SB_Temp
 0,1000,1000,5,5,,,,,,,0,1,flowrate(time),,,,Pump_Temp
 2,999,999,5,5,,,,,,,5,,flowrate(time),,,1,In_Temp
-4,998,998,5,5,,,,,,,10,,flowrate(time),,,,Out_Temp
+5,998,998,5,5,,,,,,,10,,flowrate(time),,,,Out_Temp
 6,997,997,5,5,,,,,,,15,,flowrate(time),,,,In_Press
 8,996,996,5,5,,,,,,,20,0,flowrate(time),,,,Out_Press
 10,995,995,5,5,,,,,,,25,,,,,,In_Hum

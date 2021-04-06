@@ -4,6 +4,8 @@ Created on Wed Mar  3 21:48:25 2021
 
 @author: iliodis
 """
+import pandas as pd
+
 V_in = 2
 dt = 2
 
@@ -32,24 +34,27 @@ def flowrate(df):
     j=0
     
     for k in df['time']:
-        dt = df.loc[j+1, 'time'] - k
+        try:
+            dt = df.loc[j+1, 'time'] - k
+            
+            dpin=df.loc[j+1, 'P_in']-df.loc[j, 'P_in']
+            dtin=df.loc[j+1, 'T_in']-df.loc[j, 'T_in']
+            
+            pout=(df.loc[j+1, 'P_out']+df.loc[j, 'P_out'])/2
+            pin=(df.loc[j+1, 'P_in']+df.loc[j, 'P_in'])/2
+            
+            tout=(df.loc[j+1, 'T_out']+df.loc[j, 'T_out'])/2
+            tin=(df.loc[j+1, 'T_in']+df.loc[j, 'T_in'])/2
+            
+            flow=(V_in/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)
+            
+            flow_rate.append(flow)
+            
+            j+=1
+        except:
+            break
         
-        dpin=df.loc[j+1, 'P_in']-df.loc[j, 'P_in']
-        dtin=df.loc[j+1, 'T_in']-df.loc[j, 'T_in']
-        
-        pout=(df.loc[j+1, 'P_out']+df.loc[j, 'P_out'])/2
-        pin=(df.loc[j+1, 'P_in']+df.loc[j, 'P_in'])/2
-        
-        tout=(df.loc[j+1, 'T_out']+df.loc[j, 'T_out'])/2
-        tin=(df.loc[j+1, 'T_in']+df.loc[j, 'T_in'])/2
-        
-        flow=(V_in/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)
-        
-        flow_rate.append(flow)
-        
-        j+=1
-        
-    return flow_rate
+    return pd.Series(flow_rate, dtype='float64')
 
 
 #Ο τρόπος που θα υπολογίζουμε το κέντρο μάζας
