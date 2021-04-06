@@ -17,16 +17,13 @@ def main():
     df['CO2_%v/v'] = df.apply(data_line.CO2Concentration, axis=1)
     df['Flowrate'] = methods.flowrate(df)
     
-    
 # =============================================================================
 #     Check names and units
 # =============================================================================
     
     print(df)
     
-    # #using Methods' methods to get the requested results
-    # flow = methods.flowrate(df[['P_in', 'T_in', 'P_out', 'T_out', 'time']])
-    
+    plot_ex = plot_handler.temp_and_press_plot(df.loc[:,['time','P_out']])
     
     #Exemplary plot_handler for Humidity
     plot_1 = plot_handler.humidity_plot(df['Hum_in'], df['Hum_out'], df['Altitude'])

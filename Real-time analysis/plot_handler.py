@@ -9,7 +9,7 @@ def concentrations_plot(CO2_C, O3_C, Altitude):
     #return plot-subplot
     pass
 
-def temp_and_press_plot(T_in, P_in, Altitude):
+def temp_and_press_plot(df):
     #create a plot with different scaling left-right axis
     #return plot-subplot
     pass
