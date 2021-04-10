@@ -32,3 +32,55 @@ def centre_of_mass(Altitude, Concentration):
 # 
 # return plt
 # =============================================================================
+
+
+""" Sample"""
+
+from intertools import count
+from matplotlib.animation import FuncAnimation
+import random
+
+plt.style.use('seaborn')
+
+
+dev_x = [25, 26, 27, 28]
+
+dev_y = [1, 2, 3, 4]
+
+plt.plot(dev_x, dev_y, marker = 'o', label = "sample variables")
+
+plt.title("Sample Plot")
+plt.xlabel("x")
+plt.ylabel("y")
+
+plt.legend()
+
+plt.tight_layout()
+
+
+#Για την center of mass ΜΟΝΟ:
+t_start = 2
+plt.fill_between(dev_x,dev_y, t_start, where = (dev_x > t_start), alpha = 0.25)
+#Γιατί δεν λειτουργεί το where??
+
+#Δεν είναι αναγκαία η count
+index=count()
+x_vals = []
+y_vals = []
+
+def animate (i):
+    x_vals.append(next(index))
+    y_vals.append(random.randint(0,5))
+    
+    plt.cla()
+    plt.plot(x_vals, y_vals)
+    
+ani = FuncAnimation(plt.gcf(), animate, interval = 1000)
+
+    
+
+
+
+
+
+plt.show()
