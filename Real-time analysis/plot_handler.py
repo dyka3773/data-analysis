@@ -35,12 +35,6 @@ def centre_of_mass(Altitude, Concentration):
 
 
 """ Sample"""
-
-from itertools import count
-from matplotlib.animation import FuncAnimation
-import random
-import numpy as np
-
 plt.style.use('seaborn')
 
 
@@ -48,7 +42,14 @@ dev_x = [25, 26, 27, 28]
 
 dev_y = [1, 2, 3, 4]
 
-plt.plot(dev_x, dev_y, marker = 'o', label = "sample variables")
+colors=[300, 315, 270, 305]
+
+
+
+plt.scatter(dev_x, dev_y, s=100, c=colors, cmap='Reds', edgecolor='k', linewidth=1, label = "sample variables")
+
+cbar = plt.colorbar()
+cbar.set_label('Temperature')
 
 plt.title("Sample Plot")
 plt.xlabel("x")
@@ -58,10 +59,22 @@ plt.legend()
 
 plt.tight_layout()
 
-
+"""
 #Για την center of mass ΜΟΝΟ:
 t_start = 2
 plt.fill_between(dev_x,dev_y, t_start, where = (dev_x > t_start), alpha = 0.25)
 #Γιατί δεν λειτουργεί το where??
+"""
+#ERRORS
+y_errormin = [0.1 , 0.2, 0.5, 0.1]
+y_errormax = [0.2 , 0.4, 0.1, 0.9]
+y_error = [y_errormin,y_errormax]
+
+x_error= 0.5
+
+plt.errorbar(dev_x,dev_y, yerr = y_error,
+             xerr = x_error, fmt=' ',
+             elinewidth=1, capsize=5,
+             errorevery=1, capthick=1)
 
 plt.show()
