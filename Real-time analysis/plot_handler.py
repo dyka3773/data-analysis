@@ -59,6 +59,8 @@ plt.legend()
 
 plt.tight_layout()
 
+
+
 """
 #Για την center of mass ΜΟΝΟ:
 t_start = 2
