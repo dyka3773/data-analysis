@@ -1,8 +1,6 @@
 from matplotlib import pyplot as plt
 import pandas as pd
 
-df = pd.read_excel('.\Bexus 24.xls')
-
 
 def flow_rate_plot(flowrate, Altitude):
     #flowrate-time or altitude
@@ -14,6 +12,7 @@ def concentrations_plot(CO2_C, O3_C, Altitude):
     pass
 
 def temp_and_press_plot(df):
+    df = pd.read_excel('./Bexus 24.xls')
     #create a plot with different scaling left-right axis
     #return plot-subplot
     
@@ -21,11 +20,11 @@ def temp_and_press_plot(df):
     
     colors=df['Temp out']
     
-    plt.scatter(df['Air press'], df['Altitude'], s=100, c=colors, cmap='Reds', 
-                edgecolor='k', linewidth=1, label = "P,T,A")
+    plt.scatter(df['Air press'], df['Altitude'], s=10, c=colors, cmap='Reds', 
+                edgecolor='k', linewidth=0, label = "P,T,A")
     
     cbar = plt.colorbar()
-    cbar.set_label('Temperature out(Degrees C)')
+    cbar.set_label('Temperature out(°C)')
     
     plt.title("Environmental variables")
     plt.xlabel("Pressure (mbar)")
@@ -35,7 +34,7 @@ def temp_and_press_plot(df):
     
     #ERRORS
     
-    p = 1/100 #ποσοστό σφάλματος στην πίεση
+    p = 10/100 #ποσοστό σφάλματος στην πίεση
     
     y_errormin = p*df['Air press']
     y_errormax = p*df['Air press']
@@ -43,14 +42,17 @@ def temp_and_press_plot(df):
     
     x_error= 0
     
-    plt.errorbar(df['Air press'], df['Altitude'], yerr = y_error,
-                 xerr = x_error, fmt=' ',
-                 elinewidth=1, capsize=5,
-                 errorevery=100, capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
+    plt.errorbar(df['Air press'], 
+                 df['Altitude'], 
+                 yerr = y_error,
+                 xerr = x_error, 
+                 fmt=' ',
+                 elinewidth=1,
+                 capsize=5,
+                 errorevery=100, 
+                 capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
 
     plt.show()
-    
-    
     pass
 
 def humidity_plot(Hum_in, Hum_out, Altitude):
@@ -63,59 +65,51 @@ def centre_of_mass(Altitude, Concentration):
     pass
 
 
+def sample_plot():
+    """ Sample"""
+    plt.style.use('seaborn')
+        
+    dev_x = [25, 26, 27, 28]  
+    dev_y = [1, 2, 3, 4]
+    
+    
+    colors=[300, 315, 270, 305]
+    
+    plt.scatter(dev_x, dev_y, s=100, c=colors, cmap='Reds', edgecolor='k', linewidth=1, label = "sample variables")
+    
+    cbar = plt.colorbar()
+    cbar.set_label('Temperature')
+    
+    plt.title("Sample Plot")
+    plt.xlabel("x")
+    plt.ylabel("y")
+    
+    plt.legend()
+    
+    plt.tight_layout()
+    
+    
 # =============================================================================
-# import matplotlib
-# 
-# 
-# παιρνει δεδομένα απο την main
-# 
-# return plt
+#     Για την center of mass ΜΟΝΟ:
+#     
+#     t_start = 2
+#     plt.fill_between(dev_x,dev_y, t_start, where = (dev_x > t_start), alpha = 0.25)
+#
+#     Γιατί δεν λειτουργεί το where??
 # =============================================================================
-
-
-""" Sample"""
-plt.style.use('seaborn')
     
-dev_x = [25, 26, 27, 28]
+    #ERRORS
+    y_errormin = [0.1 , 0.2, 0.5, 0.1]
+    y_errormax = [0.2 , 0.4, 0.1, 0.9]
+    y_error = [y_errormin,y_errormax]
     
-dev_y = [1, 2, 3, 4]
-
-
-colors=[300, 315, 270, 305]
+    x_error= 0.5
     
+    plt.errorbar(dev_x,dev_y, yerr = y_error,
+                 xerr = x_error, fmt=' ',
+                 elinewidth=1, capsize=5,
+                 errorevery=1, capthick=1)
+    
+    plt.show()
 
-
-plt.scatter(dev_x, dev_y, s=100, c=colors, cmap='Reds', edgecolor='k', linewidth=1, label = "sample variables")
-
-cbar = plt.colorbar()
-cbar.set_label('Temperature')
-
-plt.title("Sample Plot")
-plt.xlabel("x")
-plt.ylabel("y")
-
-plt.legend()
-
-plt.tight_layout()
-
-
-
-"""
-#Για την center of mass ΜΟΝΟ:
-t_start = 2
-plt.fill_between(dev_x,dev_y, t_start, where = (dev_x > t_start), alpha = 0.25)
-#Γιατί δεν λειτουργεί το where??
-"""
-#ERRORS
-y_errormin = [0.1 , 0.2, 0.5, 0.1]
-y_errormax = [0.2 , 0.4, 0.1, 0.9]
-y_error = [y_errormin,y_errormax]
-
-x_error= 0.5
-
-plt.errorbar(dev_x,dev_y, yerr = y_error,
-             xerr = x_error, fmt=' ',
-             elinewidth=1, capsize=5,
-             errorevery=1, capthick=1)
-
-plt.show()
+# sample_plot()

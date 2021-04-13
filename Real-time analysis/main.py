@@ -16,7 +16,7 @@ def main():
                             'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
                             'Altitude'],
                      header=0,
-                     usecols=[i for i in range(0,11)])
+                     usecols=[i for i in range(0,12)])
     
     df['O3_ppm'] = df.apply(data_line.O3Concentration, axis=1)
     df['CO2_%v/v'] = df.apply(data_line.CO2Concentration, axis=1)
@@ -30,8 +30,8 @@ def main():
     
     plot_ex = plot_handler.temp_and_press_plot(df.loc[:,['time','P_out']])
     
-    #Exemplary plot_handler for Humidity
-    plot_1 = plot_handler.humidity_plot(df['Hum_in'], df['Hum_out'], df['Altitude'])
+    # #Exemplary plot_handler for Humidity
+    # plot_1 = plot_handler.humidity_plot(df['Hum_in'], df['Hum_out'], df['Altitude'])
 
 
 
