@@ -1,4 +1,8 @@
 from matplotlib import pyplot as plt
+import pandas as pd
+
+df = pd.read_excel('.\Bexus 24.xls')
+
 
 def flow_rate_plot(flowrate, Altitude):
     #flowrate-time or altitude
@@ -12,6 +16,41 @@ def concentrations_plot(CO2_C, O3_C, Altitude):
 def temp_and_press_plot(df):
     #create a plot with different scaling left-right axis
     #return plot-subplot
+    
+    plt.style.use('seaborn')
+    
+    colors=df['Temp out']
+    
+    plt.scatter(df['Air press'], df['Altitude'], s=100, c=colors, cmap='Reds', 
+                edgecolor='k', linewidth=1, label = "P,T,A")
+    
+    cbar = plt.colorbar()
+    cbar.set_label('Temperature out(Degrees C)')
+    
+    plt.title("Environmental variables")
+    plt.xlabel("Pressure (mbar)")
+    plt.ylabel("Altitude (m)")
+    plt.legend()
+    plt.tight_layout()
+    
+    #ERRORS
+    
+    p = 1/100 #ποσοστό σφάλματος στην πίεση
+    
+    y_errormin = p*df['Air press']
+    y_errormax = p*df['Air press']
+    y_error = [y_errormin,y_errormax]
+    
+    x_error= 0
+    
+    plt.errorbar(df['Air press'], df['Altitude'], yerr = y_error,
+                 xerr = x_error, fmt=' ',
+                 elinewidth=1, capsize=5,
+                 errorevery=100, capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
+
+    plt.show()
+    
+    
     pass
 
 def humidity_plot(Hum_in, Hum_out, Altitude):
@@ -36,14 +75,14 @@ def centre_of_mass(Altitude, Concentration):
 
 """ Sample"""
 plt.style.use('seaborn')
-
-
+    
 dev_x = [25, 26, 27, 28]
-
+    
 dev_y = [1, 2, 3, 4]
 
-colors=[300, 315, 270, 305]
 
+colors=[300, 315, 270, 305]
+    
 
 
 plt.scatter(dev_x, dev_y, s=100, c=colors, cmap='Reds', edgecolor='k', linewidth=1, label = "sample variables")
