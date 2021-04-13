@@ -11,7 +11,12 @@ import methods
 import data_line
 
 def main():
-    df = pd.read_csv('./Sample CSV.csv', usecols=[0,1,2,3,4,5,6,7,8,9,10,11])
+    df = pd.read_csv('./Sample CSV.csv', 
+                     names=['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in', 
+                            'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
+                            'Altitude'],
+                     header=0,
+                     usecols=[i for i in range(0,11)])
     
     df['O3_ppm'] = df.apply(data_line.O3Concentration, axis=1)
     df['CO2_%v/v'] = df.apply(data_line.CO2Concentration, axis=1)
