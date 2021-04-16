@@ -1,4 +1,4 @@
-# README
+# ECOWISE - Data Analysis
 
 ### Who are we?
 We are a team of three undergraduate students working for one of BEAM’s projects. Our team consists of one Informatics Engineer and two Physicists.
