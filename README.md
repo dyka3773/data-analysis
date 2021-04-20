@@ -14,7 +14,7 @@ Our team is responsible for the Data Analysis of the project ECO-WISE. We are co
 | :----------------: | :-------------: | :----------------: |
 | Hercules Konsoulas | dyka3773        | dyka3773@gmail.com | 
 | Ioannis Liodis     | iliodis         | ???                | 
-| Dimitris           | AlcetA          | ???                | 
+| Dimitris Charamis  | AlcetA          | ???                | 
 
 ### What is the license of this project?
 This project can be refactored and used by anyone whose goal is to analyze mass data taken from atmosphere flights, although we would prefer if they mentioned our project and our names.
