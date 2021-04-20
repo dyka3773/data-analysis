@@ -26,14 +26,32 @@ First of all the program needs a given CSV file with 13 columns containing :
 ## data_line.py
 This module contains functions to apply on each row of a given DataFrame.
 
+<p></br></p>
+
 ### `O3Concentration( DataFrame df )`
 #### *Description*
 Calculates the O3 Concentration at any given time
 
 #### *Parameters*
-df - A DataFrame object of `OE_WE`, `O3_AE` and `T_in`
+df - A DataFrame object with columns `OE_WE`, `O3_AE` and `T_in`
+
+#### *Returns*
+The O3 Concentration
+
+<p></br></p>
+
+### `CO2Concentration( DataFrame df )`
+#### *Description*
+Calculates the CO2 Concentration at any given time
+
+#### *Parameters*
+df - A DataFrame object with columns `CO2_V1`, `CO2_V2` and `T_in`
+
+#### *Returns*
+The CO2 Concentration
 
 
 ## methods.py
 
 ## plot_handler.py
+
