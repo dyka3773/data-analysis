@@ -16,5 +16,7 @@ Our team is responsible for the Data Analysis of the project ECO-WISE. We are co
 | Ioannis Liodis     | iliodis         | ???                | 
 | Dimitrios Charamis | AlcetA          | ???                | 
 
+If you are having issues, please let us know by contacting us using our emails
+
 ### What is the license of this project?
 This project can be refactored and used by anyone whose goal is to analyze mass data taken from atmosphere flights, although we would prefer if they mentioned our project and our names.
