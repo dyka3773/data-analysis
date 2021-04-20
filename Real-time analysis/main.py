@@ -14,9 +14,9 @@ def main():
     df = pd.read_csv('./Sample CSV.csv', 
                      names=['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in', 
                             'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
-                            'Altitude'],
+                            'Altitude','flags'],
                      header=0,
-                     usecols=[i for i in range(0,12)])
+                     usecols=[i for i in range(0,13)])
     
     df['O3_ppm'] = df.apply(data_line.O3Concentration, axis=1)
     df['CO2_C'] = df.apply(data_line.CO2Concentration, axis=1)

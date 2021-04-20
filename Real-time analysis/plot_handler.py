@@ -57,15 +57,17 @@ def temp_press_out_plot(df):
     #return plot-subplot
     temp_press_out_figure, ax3 = plt.subplots()
     
+    plt.style.use('seaborn')
+    
     colors=df['T_out']
     
-    ax3.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    plt.rcParams['axes.facecolor'] = '#ccccff'
+    # ax3.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    # plt.rcParams['axes.facecolor'] = '#ccccff'
     ax3.scatter(df['P_out'], df['Altitude'], s=20, c=colors, cmap='jet', 
                   label = "ECO-WISE 2021",marker= '.')
     
     cbar = temp_press_out_figure.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax3)
-    cbar.set_label('Temperature out(°C)')
+    cbar.set_label('Temperature out (°C)')
     
     ax3.set_title("Environmental variables")
     ax3.set_xlabel("Pressure (mbar)")
@@ -211,7 +213,7 @@ def altitude_time(df):
                 marker= '.', label = "ECO-WISE 2021")
     
     cbar = altitude_time_figure.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax7)
-    cbar.set_label('Temperature out(°C)')
+    cbar.set_label('Temperature out (°C)')
     
     ax7.set_title("Balloon altitude (Altitude Over Time)")
     ax7.set_xlabel("Time (min)")
@@ -234,7 +236,7 @@ def temp_press_in_plot(df):
                 marker= '.', label = "ECO-WISE 2021")
     
     cbar = temp_press_in_figure.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax8)
-    cbar.set_label('Temperature in(°C)')
+    cbar.set_label('Temperature in (°C)')
     
     ax8.set_title("Sensor box variables")
     ax8.set_xlabel("Pressure (mbar)")
