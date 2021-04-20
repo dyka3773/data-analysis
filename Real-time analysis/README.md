@@ -9,6 +9,13 @@
 	- [Flowrate](#flowrate-DataFrame-df-)
 	- [Centre of Mass](#centre_of_mass-DataFrame-df-)
 - [plot_handler.py](#plot_handlerpy)
+	- [Flowrate Plot](#flow_rate_plot-DataFrame-df-)
+	- [Pressure-Altitude-Temperature Outside The Gondola Plot](#temp_press_out_plot-DataFrame-df-)
+	- [Humidity Plot](#humidity_plot-DataFrame-df-)
+	- [O3 Concentration Plot](#O3_conc-DataFrame-df-)
+	- [CO2 Concentration Plot](#CO2_conc-DataFrame-df-)
+	- [Altitude-Time Plot](#altitude_time-DataFrame-df-)
+	- [Pressure-Altitude-Temperature Inside The Gondola Plot](#temp_press_in_plot-DataFrame-df-)
 
 ## Clarifications
 
@@ -27,6 +34,7 @@ First of all, this program will be run in another program's GUI so everything yo
 10. Carbon Dioxide Volume 2 - which is declared as `CO2_V2` inside the program
 11. Ozone WE - which is declared as `O3_WE` inside the program
 12. Ozone AE - which is declared as `O3_AE` inside the program
+13. Flags **???** - which is declare as `flags` inside the program
 
 ## main.py
 This module contains the `main` function and it's where the program has to be started
@@ -105,4 +113,88 @@ df - A DataFrame object with every column of the CSV + the ones we made in `main
 <p></br></p>
 
 ## plot_handler.py
+This module contains functions that will return `pyplot.subplot` objects and each function is dedicated to certain plots only.
 
+### `flow_rate_plot( DataFrame df )`
+#### *Description*
+Plots how the flowrate changes over time
+
+#### *Parameters*
+df - A DataFrame object with columns `time`and `Flowrate`
+
+#### *Returns*
+`pyplot.subplot` object with the plot ready to be projected (`subplot.show()`)
+
+<p></br></p>
+
+### `temp_press_out_plot( DataFrame df )`
+#### *Description*
+Plots a graph with the pressure outside the gondola and altitude as its axes while also the color of each point in the plot changes according to the outside temperature. There are also errorbars showing what the divergence of the measurments can be.
+
+#### *Parameters*
+df - A DataFrame object with columns `T_out`, `Altitude` and `P_out`
+
+#### *Returns*
+`pyplot.subplot` object with the plot ready to be projected (`subplot.show()`)
+
+<p></br></p>
+
+### `humidity_plot( DataFrame df )`
+#### *Description*
+Plots humidity inside the gondola and humidity outside the gondola as the time passes to project the difference they can have
+
+#### *Parameters*
+df - A DataFrame object with columns `Hum_in`, `Hum_out` and `time`
+
+#### *Returns*
+`pyplot.subplot` object with the plot ready to be projected (`subplot.show()`)
+
+<p></br></p>
+
+### `O3_conc( DataFrame df )`
+#### *Description*
+Plots how the O3 Concentration changes over Altitude
+
+#### *Parameters*
+df - A DataFrame object with columns `Altitude`, `O3_ppm` and `flags`
+
+#### *Returns*
+`pyplot.subplot` object with the plot ready to be projected (`subplot.show()`)
+
+<p></br></p>
+
+### `CO2_conc( DataFrame df )`
+#### *Description*
+Plots how the CO2 Concentration changes over Altitude
+
+#### *Parameters*
+df - A DataFrame object with columns `Altitude`, `CO2_%v/v` and `flags`
+
+#### *Returns*
+`pyplot.subplot` object with the plot ready to be projected (`subplot.show()`)
+
+<p></br></p>
+
+### `altitude_time( DataFrame df )`
+#### *Description*
+Plots how the Temperature outside the gondola changes as the Altitude and Time change
+
+#### *Parameters*
+df - A DataFrame object with columns `Altitude`, `time` and `T_out`
+
+#### *Returns*
+`pyplot.subplot` object with the plot ready to be projected (`subplot.show()`)
+
+<p></br></p>
+
+### `temp_press_in_plot( DataFrame df )`
+#### *Description*
+Plots how the Temperature inside the gondola changes as the Pressure inside and Time change
+
+#### *Parameters*
+df - A DataFrame object with columns `time`, `T_in` and `P_in`
+
+#### *Returns*
+`pyplot.subplot` object with the plot ready to be projected (`subplot.show()`)
+
+<p></br></p>
