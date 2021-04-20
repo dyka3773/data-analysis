@@ -10,11 +10,11 @@ Our team is responsible for the Data Analysis of the project ECO-WISE. We are co
 
 ### Data Analysis Contributors :
 
-| Full Name          | GitHub Username | E-mail             |
-| :----------------: | :-------------: | :----------------: |
-| Hercules Konsoulas | dyka3773        | dyka3773@gmail.com | 
-| Ioannis Liodis     | iliodis         | ???                | 
-| Dimitrios Charamis | AlcetA          | ???                | 
+| Full Name          | GitHub Username | E-mail                  |
+| :----------------: | :-------------: | :---------------------: |
+| Hercules Konsoulas | dyka3773        | dyka3773@gmail.com      | 
+| Ioannis Liodis     | iliodis         | ioannisliodis@gmail.com | 
+| Dimitrios Charamis | AlcetA          | demorait@gmail.com      | 
 
 If you are having issues, please let us know by contacting us using our emails
 
