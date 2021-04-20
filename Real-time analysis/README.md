@@ -1,6 +1,20 @@
 # Real Time Analysis Documentation
 
-First of all the program needs a given CSV file with 13 columns containing :
+### Table of Contents :
+- [main.py](#mainpy)
+- [data_line.py](#data_linepy)
+	- [O3 Concentration](#O3Concentration-DataFrame-df-)
+	- [CO2 Concentration](#CO2Concentration-DataFrame-df-)
+- [methods.py](#methodspy)
+	- [Flowrate](#flowrate-DataFrame-df-)
+	- [Centre of Mass](#centre_of_mass-DataFrame-df-)
+- [plot_handler.py](#plot_handlerpy)
+
+## Clarifications
+
+First of all, this program will be run in another program's GUI so everything you see will be implemented in a larger program
+
+Τhe program, also, needs a given CSV file with 13 columns containing :
 1. Time - which is declared as `time` inside the program
 2. Pressure In - which is declared as `P_in` inside the program
 3. Pressure In - which is declared as `P_in` inside the program
@@ -13,15 +27,6 @@ First of all the program needs a given CSV file with 13 columns containing :
 10. Carbon Dioxide Volume 2 - which is declared as `CO2_V2` inside the program
 11. Ozone WE - which is declared as `O3_WE` inside the program
 12. Ozone AE - which is declared as `O3_AE` inside the program
-
-### Table of Contents :
-- [main.py](#mainpy)
-- [data_line.py](#data_linepy)
-	- [O3 Concentration](#O3Concentration-DataFrame-df-)
-	- [CO2 Concentration](#CO2Concentration-DataFrame-df-)
-- [methods.py](#methodspy)
-- [plot_handler.py](#plot_handlerpy)
-
 
 ## main.py
 This module contains the `main` function and it's where the program has to be started
@@ -72,6 +77,30 @@ The CO2 Concentration
 <p></br></p>
 
 ## methods.py
+This module contains functions that are more general to the dataset or use the whole dataset in order to produce a result
+
+### `flowrate( DataFrame df )`
+#### *Description*
+Calculates the flow rate of the pump at any given timeframe
+
+#### *Parameters*
+df - A DataFrame object with columns `time`, `P_in`, `P_out`, `T_in` and `T_out`
+
+#### *Returns*
+A `pd.Series` object where `dtype='float64'` and each row contains the flow rate at each moment
+
+<p></br></p>
+
+### `centre_of_mass( DataFrame df )`
+#### *Description*
+Calculates the centre of mass ???
+
+#### *Parameters*
+df - A DataFrame object with every column of the CSV + the ones we made in `main`.
+*`Flowrate` has to be calculated before*
+
+#### *Returns*
+`h_cm` ???
 
 <p></br></p>
 
