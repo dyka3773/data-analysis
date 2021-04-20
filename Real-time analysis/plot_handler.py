@@ -1,61 +1,89 @@
 from matplotlib import pyplot as plt
 import pandas as pd
+from matplotlib import cm
+
 
 
 def flow_rate_plot(df):
     #flowrate-time or altitude
-    plt.style.use('seaborn')
     
-    plt.scatter(df['Time'], df['flow_rate'], s=10, 
-                edgecolor='k', linewidth=0, label = "ECO-WISE 2021")
+    flow_rate_figure, ax1 = plt.subplots()
     
-    plt.title("Pump's flowrate")
-    plt.xlabel("Time (min)")
-    plt.ylabel("Flowrate (V/min)")
-    plt.legend()
+    ax1.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    plt.rcParams['axes.facecolor'] = '#ccccff'
+    ax1.scatter(df['time'], df['Flowrate'], s=20, 
+                marker= '.', label = "ECO-WISE 2021")
+    
+    ax1.set_title("Pump's flowrate")
+    ax1.set_xlabel("Time (min)")
+    ax1.set_ylabel("Flowrate (V/min)")
+    ax1.legend()
     plt.tight_layout()
     
-    plt.show()
-    pass
+    #plt.show()
+    return flow_rate_figure
 
 #NOT going to happen
-def concentrations_plot(CO2_C, O3_C, Altitude):
+def concentrations_plot(df):
     #create a plot with different scaling left-right axis
     #return plot-subplot
+# =============================================================================
+#     hercules, ax2 = plt.subplots()
+#     
+#     colors=df['T_out']
+#     
+#     ax2.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+#     plt.rcParams['axes.facecolor'] = '#ccccff'
+#     ax2.scatter(df['P_out'], df['Altitude'], s=20, c=colors, cmap='jet', 
+#                   label = "ECO-WISE 2021",marker= '.')
+#     
+#     cbar = hercules.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax2)
+#     cbar.set_label('Temperature out(°C)')
+#     
+#     ax2.set_title("Environmental variables")
+#     ax2.set_xlabel("Pressure (mbar)")
+#     ax2.set_ylabel("Altitude (m)")
+#     ax2.legend()
+#     plt.tight_layout()
+#     
+#     return hercules The first progenitor. If you delete this you get 7 
+#      years of bad luck
+# =============================================================================
     pass
 
 def temp_press_out_plot(df):
-    df = pd.read_excel('./Bexus 24.xls')
+   # df = pd.read_excel('./Bexus 24.xls')
     #create a plot with different scaling left-right axis
     #return plot-subplot
+    temp_press_out_figure, ax3 = plt.subplots()
     
-    plt.style.use('seaborn')
+    colors=df['T_out']
     
-    colors=df['Temp out']
+    ax3.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    plt.rcParams['axes.facecolor'] = '#ccccff'
+    ax3.scatter(df['P_out'], df['Altitude'], s=20, c=colors, cmap='jet', 
+                  label = "ECO-WISE 2021",marker= '.')
     
-    plt.scatter(df['Air press'], df['Altitude'], s=10, c=colors, cmap='Reds', 
-                edgecolor='k', linewidth=0, label = "ECO-WISE 2021")
-    
-    cbar = plt.colorbar()
+    cbar = temp_press_out_figure.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax3)
     cbar.set_label('Temperature out(°C)')
     
-    plt.title("Environmental variables")
-    plt.xlabel("Pressure (mbar)")
-    plt.ylabel("Altitude (m)")
-    plt.legend()
+    ax3.set_title("Environmental variables")
+    ax3.set_xlabel("Pressure (mbar)")
+    ax3.set_ylabel("Altitude (m)")
+    ax3.legend()
     plt.tight_layout()
     
     #ERRORS
     
-    p = 10/100 #ποσοστό σφάλματος στην πίεση
+    p = 1/100 #ποσοστό σφάλματος στην πίεση
     
-    y_errormin = p*df['Air press']
-    y_errormax = p*df['Air press']
+    y_errormin = p*df['P_out']
+    y_errormax = p*df['P_out']
     y_error = [y_errormin,y_errormax]
     
     x_error= 0
     
-    plt.errorbar(df['Air press'], 
+    ax3.errorbar(df['P_out'], 
                  df['Altitude'], 
                  yerr = y_error,
                  xerr = x_error, 
@@ -65,40 +93,50 @@ def temp_press_out_plot(df):
                  errorevery=100, 
                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
 
-    plt.show()
-    pass
+    #plt.show()
+    return temp_press_out_figure
 
 def humidity_plot(df):
     #create a plot with different scaling left-right axis
     #return plot-subplot
-    plt.style.use('seaborn')
+    humidity_figure, (hum_in,hum_out) = plt.subplots(nrows=2, ncols=1, sharex=True)
     
-    plt.plot(df['Time'], df['Hum_in'], label = "Hum in (ECO-WISE 2021)")
-    plt.plot(df['Time'], df['Hum_out'], label = "Hum out (ECO-WISE 2021)")
+    hum_in.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    hum_out.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    plt.rcParams['axes.facecolor'] = '#ccccff'
+    hum_in.plot(df['time'], df['Hum_in'], label = "Hum in (ECO-WISE 2021)")
+    hum_out.plot(df['time'], df['Hum_out'], label = "Hum out (ECO-WISE 2021)")
     
-    plt.title("Humidity")
-    plt.xlabel("Time (min)")
-    plt.ylabel("Humidity (%)")   #Distinction between y1 y2??
-    plt.legend()
+    hum_in.set_title("Humidity")
+    hum_in.set_ylabel("Humidity Inside (%)")  
+    hum_in.legend()
+    
+    hum_out.set_xlabel("Time (min)")
+    hum_out.set_ylabel("Humidity Outside (%)")   
+    hum_out.legend()
+    
     plt.tight_layout()
     
-    plt.show()
-    pass
+    #plt.show()
+    return humidity_figure
 
 def centre_of_mass(Altitude, Concentration):
     #return plot-subplot
     pass
 
 def O3_conc(df):
-    plt.style.use('seaborn')
     
-    plt.scatter(df['Altitude'], df['CO2_c'], s=10, 
-                edgecolor='k', linewidth=0, label = "ECO-WISE 2021")
+    O3_conc_figure, ax5 = plt.subplots()
     
-    plt.title("O3 concentration")
-    plt.xlabel("O3 (ppb)")
-    plt.ylabel("Altitude (m)")
-    plt.legend()
+    ax5.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    plt.rcParams['axes.facecolor'] = '#ccccff'
+    ax5.scatter(df['Altitude'], df['O3_ppm'], s=20,marker= '.', 
+                  label = "ECO-WISE 2021")
+    
+    ax5.set_title("O3 concentration")
+    ax5.set_xlabel("O3 (ppb)")
+    ax5.set_ylabel("Altitude (m)")
+    ax5.legend()
     plt.tight_layout()
     
     #ERRORS
@@ -108,10 +146,10 @@ def O3_conc(df):
     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
     y_error = [y_errormin,y_errormax]
     
-    x_error= p*df['O3_c']
+    x_error= p*df['O3_ppm']
     
-    plt.errorbar(df['Altitude'], 
-                 df['O3_c'], 
+    ax5.errorbar(df['Altitude'], 
+                 df['O3_ppm'], 
                  yerr = y_error,
                  xerr = x_error, 
                  fmt=' ',
@@ -120,20 +158,23 @@ def O3_conc(df):
                  errorevery=100, 
                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
 
-    plt.show()
-    pass
+    #plt.show()
+    return O3_conc_figure
 
 
 def CO2_conc(df):
-    plt.style.use('seaborn')
     
-    plt.scatter(df['Altitude'], df['CO2_c'], s=10, 
-                edgecolor='k', linewidth=0, label = "ECO-WISE 2021")
+    CO2_conc_figure, ax6 = plt.subplots()
     
-    plt.title("CO2 concentration")
-    plt.xlabel("CO2 (v/v %)")
-    plt.ylabel("Altitude (m)")
-    plt.legend()
+    ax6.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    plt.rcParams['axes.facecolor'] = '#ccccff'
+    ax6.scatter(df['Altitude'], df['CO2_C'], s=20, 
+                marker= '.', label = "ECO-WISE 2021")
+    
+    ax6.set_title("CO2 concentration")
+    ax6.set_xlabel("CO2 (v/v %)")
+    ax6.set_ylabel("Altitude (m)")
+    ax6.legend()
     plt.tight_layout()
     
     #ERRORS
@@ -143,10 +184,10 @@ def CO2_conc(df):
     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
     y_error = [y_errormin,y_errormax]
     
-    x_error= p*df['CO2_c']
+    x_error= p*df['CO2_C']
     
-    plt.errorbar(df['Altitude'], 
-                 df['CO2_c'], 
+    ax6.errorbar(df['Altitude'], 
+                 df['CO2_C'], 
                  yerr = y_error,
                  xerr = x_error, 
                  fmt=' ',
@@ -155,45 +196,50 @@ def CO2_conc(df):
                  errorevery=100, 
                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
 
-    plt.show()
-    pass
+    #plt.show()
+    return CO2_conc_figure
 
 def altitude_time(df):
     
-    plt.style.use('seaborn')
+    altitude_time_figure, ax7 = plt.subplots()
     
-    colors=df['Temp out']
+    colors=df['T_out']
     
-    plt.scatter(df['time'], df['Altitude'], s=10, c=colors, cmap='Reds', 
-                edgecolor='k', linewidth=0, label = "ECO-WISE 2021")
+    ax7.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    plt.rcParams['axes.facecolor'] = '#ccccff'
+    ax7.scatter(df['time'], df['Altitude'], s=20, c=colors, cmap='jet', 
+                marker= '.', label = "ECO-WISE 2021")
     
-    cbar = plt.colorbar()
+    cbar = altitude_time_figure.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax7)
     cbar.set_label('Temperature out(°C)')
     
-    plt.title("Balloon altitude")
-    plt.xlabel("Time (min)")
-    plt.ylabel("Altitude (m)")
-    plt.legend()
+    ax7.set_title("Balloon altitude (Altitude Over Time)")
+    ax7.set_xlabel("Time (min)")
+    ax7.set_ylabel("Altitude (m)")
+    ax7.legend()
     plt.tight_layout()
     
-    plt.show()
-    pass
+    #plt.show()
+    return altitude_time_figure
 
 def temp_press_in_plot(df):
-    plt.style.use('seaborn')
     
-    colors=df['Temp in']
+    temp_press_in_figure, ax8 = plt.subplots()
     
-    plt.scatter(df['Sample press'], df['Time'], s=10, c=colors, cmap='Reds', 
-                edgecolor='k', linewidth=0, label = "ECO-WISE 2021")
+    colors=df['T_in']
     
-    cbar = plt.colorbar()
+    ax8.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    plt.rcParams['axes.facecolor'] = '#ccccff'
+    ax8.scatter(df['time'],df['P_in'], s=20, c=colors, cmap='jet', 
+                marker= '.', label = "ECO-WISE 2021")
+    
+    cbar = temp_press_in_figure.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax8)
     cbar.set_label('Temperature in(°C)')
     
-    plt.title("Sensor box variables")
-    plt.xlabel("Pressure (mbar)")
-    plt.ylabel("Time (min)")
-    plt.legend()
+    ax8.set_title("Sensor box variables")
+    ax8.set_xlabel("Pressure (mbar)")
+    ax8.set_ylabel("Time (min)")
+    ax8.legend()
     plt.tight_layout()
     
     plt.show()
@@ -214,9 +260,9 @@ def sample_plot():
     cbar = plt.colorbar()
     cbar.set_label('Temperature')
     
-    plt.title("Sample Plot")
-    plt.xlabel("x")
-    plt.ylabel("y")
+    plt.set_title("Sample Plot")
+    plt.set_xlabel("x")
+    plt.set_ylabel("y")
     
     plt.legend()
     

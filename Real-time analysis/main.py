@@ -19,7 +19,7 @@ def main():
                      usecols=[i for i in range(0,12)])
     
     df['O3_ppm'] = df.apply(data_line.O3Concentration, axis=1)
-    df['CO2_%v/v'] = df.apply(data_line.CO2Concentration, axis=1)
+    df['CO2_C'] = df.apply(data_line.CO2Concentration, axis=1)
     df['Flowrate'] = methods.flowrate(df)
     
 # =============================================================================
@@ -27,14 +27,29 @@ def main():
 # =============================================================================
     
     print(df)
+    #Εκτυπτωτής Ektipotis
     
-    plot_ex = plot_handler.temp_and_press_plot(df.loc[:,['time','P_out']])
+    flow_plot = plot_handler.flow_rate_plot(df.loc[:,['time','Flowrate']])
+    print(flow_plot)
     
-    # #Exemplary plot_handler for Humidity
-    # plot_1 = plot_handler.humidity_plot(df['Hum_in'], df['Hum_out'], df['Altitude'])
+    temp_out_plot = plot_handler.temp_press_out_plot(df.loc[:,['T_out','P_out','Altitude']])
+    print(temp_out_plot)
+    
+    humidity_plot = plot_handler.humidity_plot(df.loc[:,['time','Hum_in','Hum_out']])
+    print(humidity_plot)
+    
+    #O3_plot = plot_handler.O3_conc(df.loc[:,['O3_ppm','Altitude']])
+    #print(O3_plot)
+    # These need flags
+   # CO2_plot = plot_handler.CO2_conc(df.loc[:,['CO2_C','Altitude']])
+    #print(CO2_plot)
 
 
-
+    altitude_plot= plot_handler.altitude_time(df.loc[:,['time','Altitude','T_out']])
+    print(altitude_plot)
+    
+    temp_in_plot = plot_handler.temp_press_in_plot(df.loc[:,['T_in','P_in','time']])
+    print(temp_in_plot)
 
 if __name__=="__main__":
     main()
