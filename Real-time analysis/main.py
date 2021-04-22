@@ -11,7 +11,7 @@ import methods
 import data_line
 
 def main():
-    df = pd.read_csv('./Sample CSV.csv', 
+    df = pd.read_csv('./CSVs/Sample CSV1.csv', 
                      names=['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in', 
                             'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
                             'Altitude','flags'],
