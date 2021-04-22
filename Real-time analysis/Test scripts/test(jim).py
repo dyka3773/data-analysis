@@ -16,11 +16,11 @@ plt.rcParams['axes.facecolor'] = '#ccccff'
 plt.scatter(Air_Press, Altitude, c= Temp_out, cmap= 'jet', s= 20, marker= '.')
 
 cbar = plt.colorbar()
-cbar.set_label('Measured Temperature (?)')
+cbar.set_label('Measured Temperature (°C)')
 
 plt.title('Temperature & Pressure Measurements')
 plt.xlabel('Pressure (mbar)')
-plt.ylabel('Altitude (?)')
+plt.ylabel('Altitude (m)')
 
 plt.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
 
