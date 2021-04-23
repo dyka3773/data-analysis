@@ -5,7 +5,7 @@ from matplotlib import cm
 
 
 def flow_rate_plot(df):
-    #flowrate-time or altitude
+    #flowrate-time over altitude
     
     flow_rate_figure, ax1 = plt.subplots()
     
@@ -20,41 +20,11 @@ def flow_rate_plot(df):
     ax1.legend()
     plt.tight_layout()
     
-    #plt.show()
     return flow_rate_figure
 
-#NOT going to happen
-def concentrations_plot(df):
-    #create a plot with different scaling left-right axis
-    #return plot-subplot
-# =============================================================================
-#     hercules, ax2 = plt.subplots()
-#     
-#     colors=df['T_out']
-#     
-#     ax2.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-#     plt.rcParams['axes.facecolor'] = '#ccccff'
-#     ax2.scatter(df['P_out'], df['Altitude'], s=20, c=colors, cmap='jet', 
-#                   label = "ECO-WISE 2021",marker= '.')
-#     
-#     cbar = hercules.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax2)
-#     cbar.set_label('Temperature out(°C)')
-#     
-#     ax2.set_title("Environmental variables")
-#     ax2.set_xlabel("Pressure (mbar)")
-#     ax2.set_ylabel("Altitude (m)")
-#     ax2.legend()
-#     plt.tight_layout()
-#     
-#     return hercules The first progenitor. If you delete this you get 7 
-#      years of bad luck
-# =============================================================================
-    pass
 
 def temp_press_out_plot(df):
-   # df = pd.read_excel('./Bexus 24.xls')
-    #create a plot with different scaling left-right axis
-    #return plot-subplot
+    
     temp_press_out_figure, ax3 = plt.subplots()
     
     plt.style.use('seaborn')
@@ -99,8 +69,6 @@ def temp_press_out_plot(df):
     return temp_press_out_figure
 
 def humidity_plot(df):
-    #create a plot with different scaling left-right axis
-    #return plot-subplot
     humidity_figure, (hum_in,hum_out) = plt.subplots(nrows=2, ncols=1, sharex=True)
     
     hum_in.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
@@ -119,12 +87,7 @@ def humidity_plot(df):
     
     plt.tight_layout()
     
-    #plt.show()
     return humidity_figure
-
-def centre_of_mass(Altitude, Concentration):
-    #return plot-subplot
-    pass
 
 def O3_conc(df):
     
@@ -141,26 +104,27 @@ def O3_conc(df):
     ax5.legend()
     plt.tight_layout()
     
-    #ERRORS
-    p = 10/100 #error percentage in concentration
-    
-    y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-    y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-    y_error = [y_errormin,y_errormax]
-    
-    x_error= p*df['O3_ppm']
-    
-    ax5.errorbar(df['Altitude'], 
-                 df['O3_ppm'], 
-                 yerr = y_error,
-                 xerr = x_error, 
-                 fmt=' ',
-                 elinewidth=1,
-                 capsize=5,
-                 errorevery=100, 
-                 capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
+# =============================================================================
+#     #ERRORS
+#     p = 10/100 #error percentage in concentration
+#     
+#     y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
+#     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
+#     y_error = [y_errormin,y_errormax]
+#     
+#     x_error= p*df['O3_ppm']
+#     
+#     ax5.errorbar(df['Altitude'], 
+#                  df['O3_ppm'], 
+#                  yerr = y_error,
+#                  xerr = x_error, 
+#                  fmt=' ',
+#                  elinewidth=1,
+#                  capsize=5,
+#                  errorevery=100, 
+#                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
+# =============================================================================
 
-    #plt.show()
     return O3_conc_figure
 
 
@@ -179,26 +143,27 @@ def CO2_conc(df):
     ax6.legend()
     plt.tight_layout()
     
-    #ERRORS
-    p = 10/100 #error percentage in concentration
-    
-    y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-    y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-    y_error = [y_errormin,y_errormax]
-    
-    x_error= p*df['CO2_C']
-    
-    ax6.errorbar(df['Altitude'], 
-                 df['CO2_C'], 
-                 yerr = y_error,
-                 xerr = x_error, 
-                 fmt=' ',
-                 elinewidth=1,
-                 capsize=5,
-                 errorevery=100, 
-                 capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
+# =============================================================================
+#     #ERRORS
+#     p = 10/100 #error percentage in concentration
+#     
+#     y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
+#     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
+#     y_error = [y_errormin,y_errormax]
+#     
+#     x_error= p*df['CO2_C']
+#     
+#     ax6.errorbar(df['Altitude'], 
+#                  df['CO2_C'], 
+#                  yerr = y_error,
+#                  xerr = x_error, 
+#                  fmt=' ',
+#                  elinewidth=1,
+#                  capsize=5,
+#                  errorevery=100, 
+#                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
+# =============================================================================
 
-    #plt.show()
     return CO2_conc_figure
 
 def altitude_time(df):
@@ -221,7 +186,6 @@ def altitude_time(df):
     ax7.legend()
     plt.tight_layout()
     
-    #plt.show()
     return altitude_time_figure
 
 def temp_press_in_plot(df):
@@ -243,9 +207,8 @@ def temp_press_in_plot(df):
     ax8.set_ylabel("Time (min)")
     ax8.legend()
     plt.tight_layout()
-    
-    plt.show()
-    pass
+
+    return temp_press_in_figure
 
 def sample_plot():
     """ Sample"""

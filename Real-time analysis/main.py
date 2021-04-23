@@ -20,12 +20,12 @@ def main():
     
     df['O3_ppm'] = df.apply(data_line.O3Concentration, axis=1)
     df['CO2_C'] = df.apply(data_line.CO2Concentration, axis=1)
-    df['Flowrate'] = methods.flowrate(df)
+    df['Flowrate'] = methods.flowrate(df.mask(lambda x: x['flags']!=1))
     
 # =============================================================================
 #     Check names and units
 # =============================================================================
-    
+    pd.set_option('display.max_rows', None)
     print(df)
     
     flow_plot = plot_handler.flow_rate_plot(df.loc[:,['time','Flowrate']])
@@ -37,12 +37,11 @@ def main():
     humidity_plot = plot_handler.humidity_plot(df.loc[:,['time','Hum_in','Hum_out']])
     print(humidity_plot)
     
-    #O3_plot = plot_handler.O3_conc(df.loc[:,['O3_ppm','Altitude']])
-    #print(O3_plot)
     # These need flags
-   # CO2_plot = plot_handler.CO2_conc(df.loc[:,['CO2_C','Altitude']])
-    #print(CO2_plot)
-
+    O3_plot = plot_handler.O3_conc(df.loc[:,['O3_ppm','Altitude']])
+    print(O3_plot)
+    CO2_plot = plot_handler.CO2_conc(df.loc[:,['CO2_C','Altitude']])
+    print(CO2_plot)
 
     altitude_plot= plot_handler.altitude_time(df.loc[:,['time','Altitude','T_out']])
     print(altitude_plot)
