@@ -11,7 +11,7 @@ import methods
 import data_line
 
 def main():
-    df = pd.read_csv('./CSVs/Sample CSV1.csv', 
+    df = pd.read_excel('./XLSXs/First_Cycles.xlsx', 
                      names=['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in', 
                             'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
                             'Altitude','flags'],
@@ -27,7 +27,6 @@ def main():
 # =============================================================================
     
     print(df)
-    #Εκτυπτωτής Ektipotis
     
     flow_plot = plot_handler.flow_rate_plot(df.loc[:,['time','Flowrate']])
     print(flow_plot)
