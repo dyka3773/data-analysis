@@ -1,20 +1,16 @@
 from matplotlib import pyplot as plt
 
 
-def flow_rate_plot(df):
-    #flowrate-time over altitude
-    
+def flow_rate_plot(df):    
     flow_rate_figure, ax1 = plt.subplots()
     
     plt.style.use('seaborn')
-    #ax1.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    #plt.rcParams['axes.facecolor'] = '#ccccff'
     ax1.scatter(df['time'], df['Flowrate'], s=20, 
                 marker= '.', label = "ECO-WISE 2021")
     
     ax1.set_title("Pump's flowrate")
     ax1.set_xlabel("Time (min)")
-    ax1.set_ylabel("Flowrate (V/min)")
+    ax1.set_ylabel("Flowrate (L/min)")
     ax1.legend()
     plt.tight_layout()
     
@@ -60,7 +56,7 @@ def temp_press_out_plot(df):
                  errorevery=100, 
                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
 
-    #plt.show()
+
     return temp_press_out_figure
 
 def humidity_plot(df):
@@ -131,8 +127,6 @@ def CO2_conc(df):
     CO2_conc_figure, ax6 = plt.subplots()
     
     plt.style.use('seaborn')
-    #ax6.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    #plt.rcParams['axes.facecolor'] = '#ccccff'
     ax6.scatter(df['Altitude'], df['CO2_C'], s=20, 
                 marker= '.', label = "ECO-WISE 2021")
     
@@ -172,8 +166,6 @@ def altitude_time(df):
     colors=df['T_out']
     
     plt.style.use('seaborn')
-    #ax7.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    #plt.rcParams['axes.facecolor'] = '#ccccff'
     plot = ax7.scatter(df['time'], df['Altitude'], s=20, c=colors, cmap='jet', 
                 marker= '.', label = "ECO-WISE 2021")
     
@@ -194,8 +186,6 @@ def temp_press_in_plot(df):
     colors=df['T_in']
     
     plt.style.use('seaborn')
-    #ax8.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    #plt.rcParams['axes.facecolor'] = '#ccccff'
     plot = ax8.scatter(df['time'],df['P_in'], s=20, c=colors, cmap='jet', 
                 marker= '.', label = "ECO-WISE 2021")
     

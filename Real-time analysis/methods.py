@@ -20,7 +20,9 @@ def flowrate(df):
             dt = df.loc[j+1, 'time'] - k
             
             dpin=df.loc[j+1, 'P_in'] - df.loc[j, 'P_in']
+            
             #dtin=df.loc[j+1, 'T_in'] - df.loc[j, 'T_in']
+            
             dtin=0
             pout=(df.loc[j+1, 'P_out'] + df.loc[j, 'P_out'])/2
             pin=(df.loc[j+1, 'P_in'] + df.loc[j, 'P_in'])/2
@@ -30,11 +32,11 @@ def flowrate(df):
             
             flow=(V_in/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)*60
             
-            flow_rate.append(flow)
+            flow_rate.append(flow if flow>0 else None)
             
             j+=1
         except:
-            break
+            continue
         
     return pd.Series(flow_rate, dtype='float64')
 
