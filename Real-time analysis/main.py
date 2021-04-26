@@ -11,7 +11,7 @@ import methods
 import data_line
 
 def main():
-    df = pd.read_csv('./Sample CSV.csv', 
+    df = pd.read_excel('./XLSXs/First_Cycles.xlsx', 
                      names=['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in', 
                             'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
                             'Altitude','flags'],
@@ -20,14 +20,13 @@ def main():
     
     df['O3_ppm'] = df.apply(data_line.O3Concentration, axis=1)
     df['CO2_C'] = df.apply(data_line.CO2Concentration, axis=1)
-    df['Flowrate'] = methods.flowrate(df)
+    df['Flowrate'] = methods.flowrate(df.mask(lambda x: x['flags']!=1))
     
 # =============================================================================
 #     Check names and units
 # =============================================================================
-    
+    pd.set_option('display.max_rows', None)
     print(df)
-    #Εκτυπτωτής Ektipotis
     
     flow_plot = plot_handler.flow_rate_plot(df.loc[:,['time','Flowrate']])
     print(flow_plot)
@@ -38,12 +37,11 @@ def main():
     humidity_plot = plot_handler.humidity_plot(df.loc[:,['time','Hum_in','Hum_out']])
     print(humidity_plot)
     
-    #O3_plot = plot_handler.O3_conc(df.loc[:,['O3_ppm','Altitude']])
-    #print(O3_plot)
     # These need flags
-   # CO2_plot = plot_handler.CO2_conc(df.loc[:,['CO2_C','Altitude']])
-    #print(CO2_plot)
-
+    O3_plot = plot_handler.O3_conc(df.loc[:,['O3_ppm','Altitude']])
+    print(O3_plot)
+    CO2_plot = plot_handler.CO2_conc(df.loc[:,['CO2_C','Altitude']])
+    print(CO2_plot)
 
     altitude_plot= plot_handler.altitude_time(df.loc[:,['time','Altitude','T_out']])
     print(altitude_plot)
