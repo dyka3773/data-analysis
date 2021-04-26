@@ -1,7 +1,4 @@
 from matplotlib import pyplot as plt
-import pandas as pd
-from matplotlib import cm
-
 
 
 def flow_rate_plot(df):
@@ -9,8 +6,9 @@ def flow_rate_plot(df):
     
     flow_rate_figure, ax1 = plt.subplots()
     
-    ax1.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    plt.rcParams['axes.facecolor'] = '#ccccff'
+    plt.style.use('seaborn')
+    #ax1.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    #plt.rcParams['axes.facecolor'] = '#ccccff'
     ax1.scatter(df['time'], df['Flowrate'], s=20, 
                 marker= '.', label = "ECO-WISE 2021")
     
@@ -31,13 +29,10 @@ def temp_press_out_plot(df):
     
     colors=df['T_out']
     
-    # ax3.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    # plt.rcParams['axes.facecolor'] = '#ccccff'
-    ax3.scatter(df['P_out'], df['Altitude'], s=20, c=colors, cmap='jet', 
+    plot = ax3.scatter(df['P_out'], df['Altitude'], s=20, c=colors, cmap='jet', 
                   label = "ECO-WISE 2021",marker= '.')
+    temp_press_out_figure.colorbar(plot, ax=ax3,label = 'Temperature out (°C)')
     
-    cbar = temp_press_out_figure.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax3, Norm = None)
-    cbar.set_label('Temperature out (°C)')
     
     ax3.set_title("Environmental variables")
     ax3.set_xlabel("Pressure (mbar)")
@@ -71,9 +66,11 @@ def temp_press_out_plot(df):
 def humidity_plot(df):
     humidity_figure, (hum_in,hum_out) = plt.subplots(nrows=2, ncols=1, sharex=True)
     
-    hum_in.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    hum_out.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    plt.rcParams['axes.facecolor'] = '#ccccff'
+    #hum_in.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    #hum_out.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    #plt.rcParams['axes.facecolor'] = '#ccccff'
+    plt.style.use('seaborn')
+    
     hum_in.plot(df['time'], df['Hum_in'], label = "Hum in (ECO-WISE 2021)")
     hum_out.plot(df['time'], df['Hum_out'], label = "Hum out (ECO-WISE 2021)")
     
@@ -93,8 +90,9 @@ def O3_conc(df):
     
     O3_conc_figure, ax5 = plt.subplots()
     
-    ax5.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    plt.rcParams['axes.facecolor'] = '#ccccff'
+    plt.style.use('seaborn')
+    #ax5.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    #plt.rcParams['axes.facecolor'] = '#ccccff'
     ax5.scatter(df['Altitude'], df['O3_ppm'], s=20,marker= '.', 
                   label = "ECO-WISE 2021")
     
@@ -132,8 +130,9 @@ def CO2_conc(df):
     
     CO2_conc_figure, ax6 = plt.subplots()
     
-    ax6.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    plt.rcParams['axes.facecolor'] = '#ccccff'
+    plt.style.use('seaborn')
+    #ax6.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    #plt.rcParams['axes.facecolor'] = '#ccccff'
     ax6.scatter(df['Altitude'], df['CO2_C'], s=20, 
                 marker= '.', label = "ECO-WISE 2021")
     
@@ -172,13 +171,13 @@ def altitude_time(df):
     
     colors=df['T_out']
     
-    ax7.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    plt.rcParams['axes.facecolor'] = '#ccccff'
-    ax7.scatter(df['time'], df['Altitude'], s=20, c=colors, cmap='jet', 
+    plt.style.use('seaborn')
+    #ax7.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    #plt.rcParams['axes.facecolor'] = '#ccccff'
+    plot = ax7.scatter(df['time'], df['Altitude'], s=20, c=colors, cmap='jet', 
                 marker= '.', label = "ECO-WISE 2021")
     
-    cbar = altitude_time_figure.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax7)
-    cbar.set_label('Temperature out (°C)')
+    altitude_time_figure.colorbar(plot, ax=ax7,label = 'Temperature out (°C)')
     
     ax7.set_title("Balloon altitude (Altitude Over Time)")
     ax7.set_xlabel("Time (min)")
@@ -194,13 +193,13 @@ def temp_press_in_plot(df):
     
     colors=df['T_in']
     
-    ax8.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    plt.rcParams['axes.facecolor'] = '#ccccff'
-    ax8.scatter(df['time'],df['P_in'], s=20, c=colors, cmap='jet', 
+    plt.style.use('seaborn')
+    #ax8.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    #plt.rcParams['axes.facecolor'] = '#ccccff'
+    plot = ax8.scatter(df['time'],df['P_in'], s=20, c=colors, cmap='jet', 
                 marker= '.', label = "ECO-WISE 2021")
     
-    cbar = temp_press_in_figure.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax8)
-    cbar.set_label('Temperature in (°C)')
+    temp_press_in_figure.colorbar(plot, ax=ax8,label = 'Temperature in (°C)')
     
     ax8.set_title("Sensor box variables")
     ax8.set_xlabel("Pressure (mbar)")
