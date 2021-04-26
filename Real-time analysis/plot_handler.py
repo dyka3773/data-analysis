@@ -66,7 +66,7 @@ def temp_press_out_plot(df):
     ax3.scatter(df['P_out'], df['Altitude'], s=20, c=colors, cmap='jet', 
                   label = "ECO-WISE 2021",marker= '.')
     
-    cbar = temp_press_out_figure.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax3)
+    cbar = temp_press_out_figure.colorbar(cm.ScalarMappable(cmap= 'jet'),ax = ax3, Norm = None)
     cbar.set_label('Temperature out (°C)')
     
     ax3.set_title("Environmental variables")
