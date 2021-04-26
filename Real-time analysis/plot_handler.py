@@ -202,8 +202,8 @@ def temp_press_in_plot(df):
     temp_press_in_figure.colorbar(plot, ax=ax8,label = 'Temperature in (°C)')
     
     ax8.set_title("Sensor box variables")
-    ax8.set_xlabel("Pressure (mbar)")
-    ax8.set_ylabel("Time (min)")
+    ax8.set_xlabel("Time (min)")
+    ax8.set_ylabel("Pressure (mbar)")
     ax8.legend()
     plt.tight_layout()
 
