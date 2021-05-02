@@ -11,12 +11,34 @@ import methods
 import data_line
 
 def main():
-    df = pd.read_excel('./XLSXs/First_Cycles.xlsx', 
-                     names=['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in', 
-                            'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
-                            'Altitude','flags'],
+    df = pd.read_excel('./XLSXs/First_Cycles.xlsx',
+                       names=['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in',
+                              'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
+                              'Altitude','flags'],
                      header=0,
                      usecols=[i for i in range(0,13)])
+    
+# =============================================================================    
+#    #SampleCSV1 
+#    df = pd.read_excel('./XLSXs/Sample CSV1.xlsx',
+#                       names=['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in',
+#                              'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
+#                              'Altitude','flags','flowrate','CO2','O3','CoM','SB_temp'],
+#                     header=0,
+#                     usecols=[i for i in range(0,18)])
+# =============================================================================
+    
+# =============================================================================
+#     #Real CSV
+#     df = pd.read_csv('./CSVs/data_csv.csv', 
+#                      names=['T_in','T_out', 'P_in', 'P_out','Hum_in', 
+#                             'Hum_out','Pump_Temp','SB_Temp','Gps_X','Gps_Y','Gps_altitude',
+#                             'O3_WE', 'O3_AE', 'CO2_V1', 'CO2_V2','time',
+#                             'Altitude','flags'],
+#                      header=0,
+#                      usecols=[i for i in range(0,13)])
+#     
+# =============================================================================
     
     df['O3_ppm'] = df.apply(data_line.O3Concentration, axis=1)
     df['CO2_C'] = df.apply(data_line.CO2Concentration, axis=1)
@@ -64,3 +86,8 @@ if __name__=="__main__":
  # καλεί plots.py
  # φτυνει plots στο gui
  # ==============================================================================
+
+
+
+
+

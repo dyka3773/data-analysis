@@ -1,15 +1,17 @@
 from matplotlib import pyplot as plt
 
 
-def flow_rate_plot(df):    
+def flow_rate_plot(df):
+    plt.style.use('seaborn')
+    
     flow_rate_figure, ax1 = plt.subplots()
     
-    plt.style.use('seaborn')
+    
     ax1.scatter(df['time'], df['Flowrate'], s=20, 
                 marker= '.', label = "ECO-WISE 2021")
     
     ax1.set_title("Pump's flowrate")
-    ax1.set_xlabel("Time (min)")
+    ax1.set_xlabel("Time (sec)")
     ax1.set_ylabel("Flowrate (L/min)")
     ax1.legend()
     plt.tight_layout()
@@ -192,7 +194,7 @@ def temp_press_in_plot(df):
     temp_press_in_figure.colorbar(plot, ax=ax8,label = 'Temperature in (°C)')
     
     ax8.set_title("Sensor box variables")
-    ax8.set_xlabel("Time (min)")
+    ax8.set_xlabel("Time (sec)")
     ax8.set_ylabel("Pressure (mbar)")
     ax8.legend()
     plt.tight_layout()
