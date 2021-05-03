@@ -12,24 +12,25 @@ import data_line
 
 def main():
     
-# =============================================================================
-#     df = pd.read_excel('./XLSXs/First_Cycles.xlsx',
-#                        names=['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in',
-#                               'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
-#                               'Altitude','flags'],
-#                      header=0,
-#                      usecols=[i for i in range(0,13)])
-# =============================================================================
-    
-  
-    #SampleCSV1 
-    df = pd.read_excel('./XLSXs/Sample CSV1.xlsx',
+    df = pd.read_excel('./XLSXs/First_Cycles.xlsx',
                        names=['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in',
                               'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
-                              'Altitude','flags','flowrate','CO2','O3','CoM','SB_temp'],
-                       header=0,
-                       usecols=[i for i in range(0,18)])
+                              'Altitude','flags'],
+                     header=0,
+                     usecols=[i for i in range(0,13)])
+    
+  
+# =============================================================================
+#     #SampleCSV1 
+#     df = pd.read_excel('./XLSXs/Sample CSV1.xlsx',
+#                        names=['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in',
+#                               'Hum_out', 'CO2_V1', 'CO2_V2', 'O3_WE', 'O3_AE',
+#                               'Altitude','flags','flowrate','CO2','O3','CoM','SB_temp'],
+#                        header=0,
+#                        usecols=[i for i in range(0,18)])
+# =============================================================================
 
+    
     
 # =============================================================================
 #     #Real CSV

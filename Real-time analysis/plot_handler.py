@@ -91,7 +91,7 @@ def O3_conc(df):
     plt.style.use('seaborn')
     #ax5.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
     #plt.rcParams['axes.facecolor'] = '#ccccff'
-    ax5.scatter(df['Altitude'], df['O3_ppm'], s=20,marker= '.', 
+    ax5.scatter(df['O3_ppm'], df['Altitude'], s=20,marker= '.', 
                   label = "ECO-WISE 2021")
     
     ax5.set_title("O3 concentration")
@@ -129,7 +129,7 @@ def CO2_conc(df):
     CO2_conc_figure, ax6 = plt.subplots()
     
     plt.style.use('seaborn')
-    ax6.scatter(df['Altitude'], df['CO2_C'], s=20, 
+    ax6.scatter(df['CO2_C'], df['Altitude'], s=20, 
                 marker= '.', label = "ECO-WISE 2021")
     
     ax6.set_title("CO2 concentration")
