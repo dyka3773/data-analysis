@@ -48,7 +48,7 @@ def CO2Concentration(df):
         Scomp = S + bneg*(T_in-Tcal)/Tcal
     
     if (1 - NRcomp > 0):
-        result = ((-1/a)*np.log(1-(1-NRcomp)/Scomp)) **(1/n)
+        result = ((-1/a)*np.log(1-((1-NRcomp)/Scomp))) **(1/n)
     else:
-        result = -((-1/a)*np.log(1-(1-NRcomp)*(-1/Scomp))) **(1/n)
+        result = ((-1/a)*np.log(1-((1-NRcomp)*(-1/Scomp))))**(1/n)
     return result
