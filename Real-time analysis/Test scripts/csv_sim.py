@@ -2,15 +2,14 @@ import csv
 import pandas as pd
 import time
 
-df = pd.read_excel('../Real-time analysis/XLSXs/First_Cycles.xlsx')
+df = pd.read_excel('../XLSXs/First_Cycles.xlsx')
 
 # print(df)
 
-fieldnames = ['time', 'Pscl', 'T', 'RH', 'v', 'u', 'Height', 'P', 
-              'TD', 'MR', 'DD', 'FF', 'AZ', 'Range', 'Lon', 'Lat',
-              'Key', 'UsrKey', 'RadarH']
+fieldnames = ['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in', 'Hum_out', 'CO2_V1', 
+              'CO2_V2', 'O3_WE', 'O3_AE', 'Altitude', 'flags']
 
-with open('data.csv', 'w') as csv_file:
+with open('data.csv', 'w', newline='') as csv_file:
     csv_writer = csv.DictWriter(csv_file, fieldnames= fieldnames)
     csv_writer.writeheader()
    
@@ -18,33 +17,27 @@ with open('data.csv', 'w') as csv_file:
 i=0
 while True:
     
-    with open('data.csv', 'a') as csv_file:
+    with open('data.csv', 'a', newline='') as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames= fieldnames)
         
         info = {
             'time': df.iloc[i,0],
-            'Pscl': df.iloc[i,1],
-            'T': df.iloc[i,2],
-            'RH': df.iloc[i,3],
-            'v': df.iloc[i,4],
-            'u': df.iloc[i,5],
-            'Height': df.iloc[i,6],
-            'P': df.iloc[i,7],
-            'TD': df.iloc[i,8],
-            'MR': df.iloc[i,9],
-            'DD': df.iloc[i,10],
-            'FF': df.iloc[i,11],
-            'AZ': df.iloc[i,12],
-            'Range': df.iloc[i,13],
-            'Lon': df.iloc[i,14],
-            'Lat': df.iloc[i,15],
-            'Key': df.iloc[i,16],
-            'UsrKey': df.iloc[i,17],
-            'RadarH': df.iloc[i,18]
+            'P_in': df.iloc[i,1],
+            'P_out': df.iloc[i,2],
+            'T_in': df.iloc[i,3],
+            'T_out': df.iloc[i,4],
+            'Hum_in': df.iloc[i,5],
+            'Hum_out': df.iloc[i,6],
+            'CO2_V1': df.iloc[i,7],
+            'CO2_V2': df.iloc[i,8],
+            'O3_WE': df.iloc[i,9],
+            'O3_AE': df.iloc[i,10],
+            'Altitude': df.iloc[i,11],
+            'flags': df.iloc[i,12]
         }
         
         csv_writer.writerow(info)
-        print(df.iloc[i,0], df.iloc[i,6]) # TIME - HEIGHT
+        print(df.iloc[i,0], df.iloc[i,11]) # Time - Altitude
         
         i +=1
     time.sleep(1)
