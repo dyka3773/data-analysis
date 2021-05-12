@@ -32,7 +32,7 @@ def flowrate(df):
             
             flow=(V_in/pout)*(tout/tin)*(dpin/dt-(pin/tin)*dtin/dt)*60
             
-            flow_rate.append(flow if flow>0 else None)
+            flow_rate.append(flow if flow>0 else 0)     # WRONG
             
             j+=1
         except:
@@ -43,7 +43,7 @@ def flowrate(df):
 
 
 def centre_of_mass(df): #Το όρισμα θα είναι ένας πίνακας με όλες τις στήλες δεδομένων από μία χρονική στιγμή έως μία άλλη
-
+# Only parts of the original dataset needed
     
     #Fixed σταθερές to be determined
     Mr = 20
@@ -58,14 +58,16 @@ def centre_of_mass(df): #Το όρισμα θα είναι ένας πίνακα
     i=0
     
     for j in df['Flowrate']:
-        
-        Dt = df.loc[i+1, 'time'] - df.loc[i, 'time']
-        
-        suma_m += j * Dt
-        
-        suma_h += j * Dt * df.loc[i, 'Altitude']
-        
-        i+=1
+        try:
+            Dt = df.loc[i+1, 'time'] - df.loc[i, 'time']
+            
+            suma_m += j * Dt
+            
+            suma_h += j * Dt * df.loc[i, 'Altitude']
+            
+            i+=1
+        except:
+            continue
         
     mtot = P_mean * Mr / (R * T_mean) * suma_m
     
