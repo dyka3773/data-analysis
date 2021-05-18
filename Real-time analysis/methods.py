@@ -53,6 +53,7 @@ def centre_of_mass(df): #Το όρισμα θα είναι ένας πίνακα
     P_mean = sum(df['P_in'])/len(df['P_in'])
     T_mean = sum(df['T_in'])/len(df['T_in'])
     
+    
     suma_m=0
     suma_h=0
     i=0
@@ -74,6 +75,6 @@ def centre_of_mass(df): #Το όρισμα θα είναι ένας πίνακα
     "Υπολογισμός κέντρου μάζας (καθ' ύψος)"
     
     #Το ζητούμενο
-    h_cm = P_mean * Mr / (R * T_mean * mtot) * suma_h
+    h_cm = (P_mean * Mr / (R * T_mean * mtot)) * suma_h
     
     return h_cm
