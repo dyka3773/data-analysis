@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 #CSV Creation Files 
-.bat
+*.bat
 
 #VS Code files
 
