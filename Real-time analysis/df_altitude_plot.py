@@ -6,6 +6,8 @@ Created on Fri May 14 15:12:49 2021
 """
 
 import methods
+from matplotlib import pyplot as plt
+import numpy as np
 
 #Dataframe for the altitude plot "df_alt"
 import pandas as pd
@@ -74,6 +76,34 @@ for row in df_alt['ymin']:
 df_alt['yerrmin'] = df_alt['altitude'] - df_alt['ymin']
 df_alt['yerrmax'] =  df_alt['ymax'] - df_alt['altitude']
 
-# pd.set_option('display.max_columns', None)
+pd.set_option('display.max_columns', None)
+def centre_of_mass_plot(df_alt) :
+    
+    centre_of_mass_figure,ax1 = plt.subplots()
+    
+    plt.style.use('seaborn')
+    
+    ax1.scatter(df_alt['cycle'],df_alt['altitude'],label = "Centre of mass of each Cycle"
+                       )
+    
+    y_error = [df_alt['yerrmin'],df_alt['yerrmax']]
+    
+    ax1.errorbar(df_alt['cycle'],df_alt['altitude'], yerr = y_error,fmt=' ',
+                 elinewidth=1, capsize=5,
+                 errorevery=1, capthick=1)
+    
+    ax1.set_title("Altitude xmm den mou erxetai kati kalo")
+    ax1.set_xlabel("Cycle (N)")
+    ax1.set_ylabel("Altitude (m)")
+    ax1.legend()
+    plt.tight_layout()
+    
+    ax1.set_xticks(np.arange(1,df_alt.iloc[-1,0] + 1, step = 1))
+    
+    return centre_of_mass_figure
 
+centre_of_mass_plot = centre_of_mass_plot(df_alt.loc[:,['cycle',
+                            'yerrmin','yerrmax','altitude']])
+print(centre_of_mass_plot)
+    
 print(df_alt)
