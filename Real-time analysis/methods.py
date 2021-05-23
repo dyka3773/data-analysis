@@ -50,8 +50,8 @@ def centre_of_mass(df): #Το όρισμα θα είναι ένας πίνακα
     R = 8 
     
     #Η μέση πίεση και θερμοκρασία
-    P_mean = sum(df['P_in'])/len(df['P_in'])
-    T_mean = sum(df['T_in'])/len(df['T_in'])
+    P_mean = df['P_in'].mean()
+    T_mean = df['T_in'].mean()
     
     
     suma_m=0
