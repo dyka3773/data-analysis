@@ -35,19 +35,19 @@ def main():
 # =============================================================================
 #     #Real CSV
 #     df = pd.read_csv('./CSVs/data_csv.csv', 
-#                      names=['T_in','T_out', 'P_in', 'P_out','Hum_in', 
+#                      names=['time','T_in','T_out', 'P_in', 'P_out','Hum_in', 
 #                             'Hum_out','Pump_Temp','SB_Temp','Gps_X','Gps_Y','Gps_altitude',
-#                             'O3_WE', 'O3_AE', 'CO2_V1', 'CO2_V2','time',
-#                             'Altitude','flags'],
+#                             'O3_WE', 'O3_AE', 'CO2_V1', 'CO2_V2', 'Data_acq' , 'valve_1' , 'valve_2'],
 #                      header=0,
-#                      usecols=[i for i in range(0,13)])
+#                      usecols=[i for i in range(0,19)])
 #     
 # =============================================================================
     
+    df['flags'] = 1 if (df["valve_1"]==1 and df["valve_2"]==0) else 0   #HERCULES CHECK
     df['O3_ppm'] = df.apply(data_line.O3Concentration, axis=1)
     df['CO2_C'] = df.apply(data_line.CO2Concentration, axis=1)
     df['Flowrate'] = methods.flowrate(df.mask(lambda x: x['flags']!=1))
-    
+
 # =============================================================================
 #     Check names and units
 # =============================================================================

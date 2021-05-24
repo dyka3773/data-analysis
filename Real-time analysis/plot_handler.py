@@ -201,6 +201,86 @@ def temp_press_in_plot(df):
 
     return temp_press_in_figure
 
+#FLOATING TIME BASICS
+def O3_time(df):
+    
+    O3_conc_figure, ax5 = plt.subplots()
+    
+    plt.style.use('seaborn')
+    #ax5.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    #plt.rcParams['axes.facecolor'] = '#ccccff'
+    ax5.scatter(df['time'],df['O3_ppm'], s=20,marker= '.', 
+                  label = "ECO-WISE 2021")
+    
+    ax5.set_title("O3 concentration")
+    ax5.set_xlabel("Time (min)")
+    ax5.set_ylabel("O3 (ppb)")
+    ax5.legend()
+    plt.tight_layout()
+    
+# =============================================================================
+#     #ERRORS
+#     p = 10/100 #error percentage in concentration
+#     
+#     y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
+#     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
+#     y_error = [y_errormin,y_errormax]
+#     
+#     x_error= p*df['O3_ppm']
+#     
+#     ax5.errorbar(df['Altitude'], 
+#                  df['O3_ppm'], 
+#                  yerr = y_error,
+#                  xerr = x_error, 
+#                  fmt=' ',
+#                  elinewidth=1,
+#                  capsize=5,
+#                  errorevery=100, 
+#                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
+# =============================================================================
+
+    return O3_conc_figure
+
+
+def CO2_time(df):
+    
+    CO2_conc_figure, ax6 = plt.subplots()
+    
+    plt.style.use('seaborn')
+    ax6.scatter(df['time'],df['CO2_C'], s=20, 
+                marker= '.', label = "ECO-WISE 2021")
+    
+    ax6.set_title("CO2 concentration")
+    ax6.set_xlabel("Time (min)")
+    ax6.set_ylabel("CO2 (v/v %)")
+    ax6.legend()
+    plt.tight_layout()
+    
+# =============================================================================
+#     #ERRORS
+#     p = 10/100 #error percentage in concentration
+#     
+#     y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
+#     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
+#     y_error = [y_errormin,y_errormax]
+#     
+#     x_error= p*df['CO2_C']
+#     
+#     ax6.errorbar(df['Altitude'], 
+#                  df['CO2_C'], 
+#                  yerr = y_error,
+#                  xerr = x_error, 
+#                  fmt=' ',
+#                  elinewidth=1,
+#                  capsize=5,
+#                  errorevery=100, 
+#                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
+# =============================================================================
+
+    return CO2_conc_figure
+
+
+
 def sample_plot():
     """ Sample"""
     plt.style.use('seaborn')
