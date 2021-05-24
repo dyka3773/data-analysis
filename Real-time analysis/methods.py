@@ -50,8 +50,9 @@ def centre_of_mass(df): #Το όρισμα θα είναι ένας πίνακα
     R = 8 
     
     #Η μέση πίεση και θερμοκρασία
-    P_mean = sum(df['P_in'])/len(df['P_in'])
-    T_mean = sum(df['T_in'])/len(df['T_in'])
+    P_mean = df['P_in'].mean()
+    T_mean = df['T_in'].mean()
+    
     
     suma_m=0
     suma_h=0
@@ -74,6 +75,6 @@ def centre_of_mass(df): #Το όρισμα θα είναι ένας πίνακα
     "Υπολογισμός κέντρου μάζας (καθ' ύψος)"
     
     #Το ζητούμενο
-    h_cm = P_mean * Mr / (R * T_mean * mtot) * suma_h
+    h_cm = (P_mean * Mr / (R * T_mean * mtot)) * suma_h
     
     return h_cm

@@ -9,6 +9,7 @@ import pandas as pd
 import plot_handler
 import methods
 import data_line
+import df_altitude_plot
 
 def main():
     
@@ -62,7 +63,7 @@ def main():
     
     humidity_plot = plot_handler.humidity_plot(df.loc[:,['time','Hum_in','Hum_out']])
     print(humidity_plot)
-    
+
     # These need flags
     O3_plot = plot_handler.O3_conc(df.loc[:,['O3_ppm','Altitude']])
     print(O3_plot)
