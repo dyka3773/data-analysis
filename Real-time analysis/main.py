@@ -44,7 +44,7 @@ def main():
                      usecols=[i for i in range(0,19)])
     
     
-    df['flags'] = df.apply(lambda x: 1 if (x["valve_1"]==1 and x["valve_2"]==0) else 0, axis=1)   #HERCULES CHECK
+    df['flags'] = df.apply(lambda x: 1 if (x["valve_1"]==1 and x["valve_2"]==0) else 0, axis=1)
     df['O3_ppm'] = df.apply(data_line.O3Concentration, axis=1)
     df['CO2_C'] = df.apply(data_line.CO2Concentration, axis=1)
     df['Flowrate'] = methods.flowrate(df.mask(lambda x: x['flags']!=1))
@@ -80,21 +80,3 @@ def main():
 
 if __name__=="__main__":
     main()
-
- # ==============================================================================
- # import ./plots
- # 
- # pandas διαχειριση csv
- #
- # εισαγωγη δεδομένων στην methods
- # εξαγωγή δεδομένων για τα plots
- #
- # εισαγει δεδομενα σε plots
- # καλεί plots.py
- # φτυνει plots στο gui
- # ==============================================================================
-
-
-
-
-
