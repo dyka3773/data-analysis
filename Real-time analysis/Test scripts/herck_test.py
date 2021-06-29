@@ -6,7 +6,7 @@ Created on Fri Apr 23 00:51:41 2021
 """
 import pandas as pd
 from matplotlib import pyplot as plt
-#########################################
+
 plt.style.use('seaborn')
 from matplotlib.animation import FuncAnimation
 from mpl_toolkits.axes_grid1 import make_axes_locatable
