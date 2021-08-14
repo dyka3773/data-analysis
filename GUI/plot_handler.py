@@ -64,9 +64,9 @@ def temp_press_out_plot(df):
 def humidity_plot(df):
     humidity_figure, (hum_in,hum_out) = plt.subplots(nrows=2, ncols=1, sharex=True)
     
-    #hum_in.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    #hum_out.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    #plt.rcParams['axes.facecolor'] = '#ccccff'
+    # hum_in.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    # hum_out.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    # plt.rcParams['axes.facecolor'] = '#ccccff'
     plt.style.use('seaborn')
     
     hum_in.plot(df['time'], df['Hum_in'], label = "Hum in (ECO-WISE 2021)")
@@ -89,9 +89,11 @@ def O3_conc(df):
     O3_conc_figure, ax5 = plt.subplots()
     
     plt.style.use('seaborn')
-    #ax5.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    #plt.rcParams['axes.facecolor'] = '#ccccff'
-    ax5.scatter(df['O3_ppm'], df['Altitude'], s=20,marker= '.', 
+    # ax5.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    # plt.rcParams['axes.facecolor'] = '#ccccff'
+    ax5.scatter(df['O3_ppm_a'], df['Altitude'], s=20,marker= '.', c='#0000FF',
+                  label = "ECO-WISE 2021")
+    ax5.scatter(df['O3_ppm_b'], df['Altitude'], s=20,marker= '.', c='#FF0000',
                   label = "ECO-WISE 2021")
     
     ax5.set_title("O3 concentration")
@@ -108,7 +110,9 @@ def CO2_conc(df):
     CO2_conc_figure, ax6 = plt.subplots()
     
     plt.style.use('seaborn')
-    ax6.scatter(df['CO2_C'], df['Altitude'], s=20, 
+    ax6.scatter(df['CO2_C_a'], df['Altitude'], s=20, c='#0000FF',
+                marker= '.', label = "ECO-WISE 2021")
+    ax6.scatter(df['CO2_C_b'], df['Altitude'], s=20, c='#FF0000',
                 marker= '.', label = "ECO-WISE 2021")
     
     ax6.set_title("CO2 concentration")
@@ -194,54 +198,3 @@ def CO2_time(df):
     plt.tight_layout()
 
     return CO2_conc_figure
-
-
-
-def sample_plot():
-    """ Sample"""
-    plt.style.use('seaborn')
-        
-    dev_x = [25, 26, 27, 28]  
-    dev_y = [1, 2, 3, 4]
-    
-    
-    colors=[300, 315, 270, 305]
-    
-    plt.scatter(dev_x, dev_y, s=100, c=colors, cmap='Reds', edgecolor='k', linewidth=1, label = "sample variables")
-    
-    cbar = plt.colorbar()
-    cbar.set_label('Temperature')
-    
-    plt.set_title("Sample Plot")
-    plt.set_xlabel("x")
-    plt.set_ylabel("y")
-    
-    plt.legend()
-    
-    plt.tight_layout()
-    
-    
-# =============================================================================
-#     Για την center of mass ΜΟΝΟ:
-#     
-#     t_start = 2
-#     plt.fill_between(dev_x,dev_y, t_start, where = (dev_x > t_start), alpha = 0.25)
-#
-#     Γιατί δεν λειτουργεί το where??
-# =============================================================================
-    
-    #ERRORS
-    y_errormin = [0.1 , 0.2, 0.5, 0.1]
-    y_errormax = [0.2 , 0.4, 0.1, 0.9]
-    y_error = [y_errormin,y_errormax]
-    
-    x_error= 0.5
-    
-    plt.errorbar(dev_x,dev_y, yerr = y_error,
-                 xerr = x_error, fmt=' ',
-                 elinewidth=1, capsize=5,
-                 errorevery=1, capthick=1)
-    
-    plt.show()
-
-# sample_plot()
