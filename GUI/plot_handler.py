@@ -99,27 +99,6 @@ def O3_conc(df):
     ax5.set_ylabel("Altitude (m)")
     ax5.legend()
     plt.tight_layout()
-    
-# =============================================================================
-#     #ERRORS
-#     p = 10/100 #error percentage in concentration
-#     
-#     y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_error = [y_errormin,y_errormax]
-#     
-#     x_error= p*df['O3_ppm']
-#     
-#     ax5.errorbar(df['Altitude'], 
-#                  df['O3_ppm'], 
-#                  yerr = y_error,
-#                  xerr = x_error, 
-#                  fmt=' ',
-#                  elinewidth=1,
-#                  capsize=5,
-#                  errorevery=100, 
-#                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
-# =============================================================================
 
     return O3_conc_figure
 
@@ -137,27 +116,6 @@ def CO2_conc(df):
     ax6.set_ylabel("Altitude (m)")
     ax6.legend()
     plt.tight_layout()
-    
-# =============================================================================
-#     #ERRORS
-#     p = 10/100 #error percentage in concentration
-#     
-#     y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_error = [y_errormin,y_errormax]
-#     
-#     x_error= p*df['CO2_C']
-#     
-#     ax6.errorbar(df['Altitude'], 
-#                  df['CO2_C'], 
-#                  yerr = y_error,
-#                  xerr = x_error, 
-#                  fmt=' ',
-#                  elinewidth=1,
-#                  capsize=5,
-#                  errorevery=100, 
-#                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
-# =============================================================================
 
     return CO2_conc_figure
 
@@ -217,27 +175,6 @@ def O3_time(df):
     ax5.set_ylabel("O3 (ppb)")
     ax5.legend()
     plt.tight_layout()
-    
-# =============================================================================
-#     #ERRORS
-#     p = 10/100 #error percentage in concentration
-#     
-#     y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_error = [y_errormin,y_errormax]
-#     
-#     x_error= p*df['O3_ppm']
-#     
-#     ax5.errorbar(df['Altitude'], 
-#                  df['O3_ppm'], 
-#                  yerr = y_error,
-#                  xerr = x_error, 
-#                  fmt=' ',
-#                  elinewidth=1,
-#                  capsize=5,
-#                  errorevery=100, 
-#                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
-# =============================================================================
 
     return O3_conc_figure
 
@@ -255,27 +192,6 @@ def CO2_time(df):
     ax6.set_ylabel("CO2 (v/v %)")
     ax6.legend()
     plt.tight_layout()
-    
-# =============================================================================
-#     #ERRORS
-#     p = 10/100 #error percentage in concentration
-#     
-#     y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_error = [y_errormin,y_errormax]
-#     
-#     x_error= p*df['CO2_C']
-#     
-#     ax6.errorbar(df['Altitude'], 
-#                  df['CO2_C'], 
-#                  yerr = y_error,
-#                  xerr = x_error, 
-#                  fmt=' ',
-#                  elinewidth=1,
-#                  capsize=5,
-#                  errorevery=100, 
-#                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
-# =============================================================================
 
     return CO2_conc_figure
 

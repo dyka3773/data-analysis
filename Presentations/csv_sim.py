@@ -6,8 +6,15 @@ df = pd.read_excel('../Real-time analysis/XLSXs/First_Cycles.xlsx')
 
 # print(df)
 
-fieldnames = ['time', 'P_in', 'P_out', 'T_in', 'T_out', 'Hum_in', 'Hum_out', 'CO2_V1', 
-              'CO2_V2', 'O3_WE', 'O3_AE', 'Altitude', 'flags']
+fieldnames = [
+    'time', 
+    'P_in', 'P_out',
+    'T_in', 'T_out',
+    'Hum_in', 'Hum_out',
+    'CO2_V1', 'CO2_V2',
+    'O3_WE', 'O3_AE',
+    'Altitude',
+    'flags']
 
 with open('data.csv', 'w', newline='') as csv_file:
     csv_writer = csv.DictWriter(csv_file, fieldnames= fieldnames)
