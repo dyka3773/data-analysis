@@ -89,8 +89,8 @@ def O3_conc(df):
     O3_conc_figure, ax5 = plt.subplots()
     
     plt.style.use('seaborn')
-    #ax5.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
-    #plt.rcParams['axes.facecolor'] = '#ccccff'
+    # ax5.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
+    # plt.rcParams['axes.facecolor'] = '#ccccff'
     ax5.scatter(df['O3_ppm_a'], df['Altitude'], s=20,marker= '.', c='#0000FF',
                   label = "ECO-WISE 2021")
     ax5.scatter(df['O3_ppm_b'], df['Altitude'], s=20,marker= '.', c='#FF0000',

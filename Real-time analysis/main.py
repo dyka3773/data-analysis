@@ -13,7 +13,7 @@ import data_line
 def main():
     
     df = pd.read_excel('./XLSXs/First_Cycles.xlsx',
-                       names=['time', 
+                       names = ['time', 
                               'P_in', 'P_out',
                               'T_in', 'T_out', 
                               'Hum_in', 'Hum_out',
