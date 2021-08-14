@@ -91,7 +91,9 @@ def O3_conc(df):
     plt.style.use('seaborn')
     #ax5.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
     #plt.rcParams['axes.facecolor'] = '#ccccff'
-    ax5.scatter(df['O3_ppm'], df['Altitude'], s=20,marker= '.', 
+    ax5.scatter(df['O3_ppm_a'], df['Altitude'], s=20,marker= '.', c='#0000FF',
+                  label = "ECO-WISE 2021")
+    ax5.scatter(df['O3_ppm_b'], df['Altitude'], s=20,marker= '.', c='#FF0000',
                   label = "ECO-WISE 2021")
     
     ax5.set_title("O3 concentration")
@@ -99,27 +101,6 @@ def O3_conc(df):
     ax5.set_ylabel("Altitude (m)")
     ax5.legend()
     plt.tight_layout()
-    
-# =============================================================================
-#     #ERRORS
-#     p = 10/100 #error percentage in concentration
-#     
-#     y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_error = [y_errormin,y_errormax]
-#     
-#     x_error= p*df['O3_ppm']
-#     
-#     ax5.errorbar(df['Altitude'], 
-#                  df['O3_ppm'], 
-#                  yerr = y_error,
-#                  xerr = x_error, 
-#                  fmt=' ',
-#                  elinewidth=1,
-#                  capsize=5,
-#                  errorevery=100, 
-#                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
-# =============================================================================
 
     return O3_conc_figure
 
@@ -129,7 +110,9 @@ def CO2_conc(df):
     CO2_conc_figure, ax6 = plt.subplots()
     
     plt.style.use('seaborn')
-    ax6.scatter(df['CO2_C'], df['Altitude'], s=20, 
+    ax6.scatter(df['CO2_C_a'], df['Altitude'], s=20, c='#0000FF',
+                marker= '.', label = "ECO-WISE 2021")
+    ax6.scatter(df['CO2_C_b'], df['Altitude'], s=20, c='#FF0000',
                 marker= '.', label = "ECO-WISE 2021")
     
     ax6.set_title("CO2 concentration")
@@ -137,27 +120,6 @@ def CO2_conc(df):
     ax6.set_ylabel("Altitude (m)")
     ax6.legend()
     plt.tight_layout()
-    
-# =============================================================================
-#     #ERRORS
-#     p = 10/100 #error percentage in concentration
-#     
-#     y_errormin = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_errormax = df['flags']  #CHECK ERRORBARS BASED ON FLAGS (start-end of each circle)
-#     y_error = [y_errormin,y_errormax]
-#     
-#     x_error= p*df['CO2_C']
-#     
-#     ax6.errorbar(df['Altitude'], 
-#                  df['CO2_C'], 
-#                  yerr = y_error,
-#                  xerr = x_error, 
-#                  fmt=' ',
-#                  elinewidth=1,
-#                  capsize=5,
-#                  errorevery=100, 
-#                  capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
-# =============================================================================
 
     return CO2_conc_figure
 

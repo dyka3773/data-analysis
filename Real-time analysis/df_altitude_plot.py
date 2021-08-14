@@ -34,7 +34,7 @@ i=0
 df_alt.loc[i,"cycle"] = i+1
 df_alt.loc[i,"ymin"] = df.loc[0,'Altitude']
             
-for k in df['flags']: # TODO: Continue should be somewhere in here
+for k in df['flags']:
     try:
         if df.loc[j+1, 'flags']-k == 0:
             j+=1
@@ -77,6 +77,7 @@ df_alt['yerrmin'] = df_alt['altitude'] - df_alt['ymin']
 df_alt['yerrmax'] =  df_alt['ymax'] - df_alt['altitude']
 
 pd.set_option('display.max_columns', None)
+
 def centre_of_mass_plot(df_alt) :
     
     centre_of_mass_figure,ax1 = plt.subplots()
