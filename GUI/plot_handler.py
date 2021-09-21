@@ -40,23 +40,23 @@ def temp_press_out_plot(df):
     
     #ERRORS
     
-    p = 1/100 #ποσοστό σφάλματος στην πίεση
+    # p = 1/100 #ποσοστό σφάλματος στην πίεση
     
-    y_errormin = p*df['P_out']
-    y_errormax = p*df['P_out']
-    y_error = [y_errormin,y_errormax]
+    # y_errormin = p*df['P_out']
+    # y_errormax = p*df['P_out']
+    # y_error = [y_errormin,y_errormax]
     
-    x_error= 0
+    # x_error= 0
     
-    ax3.errorbar(df['P_out'], 
-                 df['Altitude'], 
-                 yerr = y_error,
-                 xerr = x_error, 
-                 fmt=' ',
-                 elinewidth=1,
-                 capsize=5,
-                 errorevery=100, 
-                 capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
+    # ax3.errorbar(df['P_out'], 
+    #              df['Altitude'], 
+    #              yerr = y_error,
+    #              xerr = x_error, 
+    #              fmt=' ',
+    #              elinewidth=1,
+    #              capsize=5,
+    #              errorevery=100, 
+    #              capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
 
 
     return temp_press_out_figure

@@ -119,8 +119,8 @@ def CO2ConcentrationA(df):
     CO2_V2 = df.CO2_V2_a
     T_in = df.T_in
     
-    a= 0.652
-    n= 0.746 # linearization coefficients υπολογιστουν στα tests (me fittings)
+    a= 2.49
+    n= 0.811 # linearization coefficients υπολογιστουν στα tests (me fittings)
     Z = 1.33 
     S = 0.4408   # Zero και Span , θα υπολογιστούν οταν γίνουν τα test (me fittings)
     Tcal = 19.78 # kata protimhsh 20
@@ -131,7 +131,7 @@ def CO2ConcentrationA(df):
     
     """TOWATCH Fitting Temp"""
     
-    NR = CO2_V1/(Z*CO2_V2)
+    NR = CO2_V2/(Z*CO2_V1)
     
     if (T_in>Tcal):
         NRcomp = NR*(1+apos*(T_in-Tcal))
@@ -151,8 +151,8 @@ def CO2ConcentrationB(df):
     CO2_V2 = df.CO2_V2_b
     T_in = df.T_in
     
-    a= 0.652
-    n= 0.746 # linearization coefficients υπολογιστουν στα tests (me fittings)
+    a= 2.49
+    n= 0.811 # linearization coefficients υπολογιστουν στα tests (me fittings)
     Z = 1.33 
     S = 0.4408   # Zero και Span , θα υπολογιστούν οταν γίνουν τα test (me fittings)
     Tcal = 19.78 # kata protimhsh 20
@@ -163,7 +163,7 @@ def CO2ConcentrationB(df):
     
     """TOWATCH Fitting Temp"""
     
-    NR = CO2_V1/(Z*CO2_V2)
+    NR = CO2_V2/(Z*CO2_V1)
     
     if (T_in>Tcal):
         NRcomp = NR*(1+apos*(T_in-Tcal))
