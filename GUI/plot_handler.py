@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 
 
-def flow_rate_plot(df):
+""" def flow_rate_plot(df):
     plt.style.use('seaborn')
     
     flow_rate_figure, ax1 = plt.subplots()
@@ -16,7 +16,7 @@ def flow_rate_plot(df):
     ax1.legend()
     plt.tight_layout()
     
-    return flow_rate_figure
+    return flow_rate_figure """
 
 
 def temp_press_out_plot(df):
@@ -40,23 +40,23 @@ def temp_press_out_plot(df):
     
     #ERRORS
     
-    # p = 1/100 #ποσοστό σφάλματος στην πίεση
+    """ p = 1/100 #ποσοστό σφάλματος στην πίεση
     
-    # y_errormin = p*df['P_out']
-    # y_errormax = p*df['P_out']
-    # y_error = [y_errormin,y_errormax]
+    y_errormin = p*df['P_out']
+    y_errormax = p*df['P_out']
+    y_error = [y_errormin,y_errormax]
     
-    # x_error= 0
+    x_error= 0
     
-    # ax3.errorbar(df['P_out'], 
-    #              df['Altitude'], 
-    #              yerr = y_error,
-    #              xerr = x_error, 
-    #              fmt=' ',
-    #              elinewidth=1,
-    #              capsize=5,
-    #              errorevery=100, 
-    #              capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
+    ax3.errorbar(df['P_out'], 
+                 df['Altitude'], 
+                 yerr = y_error,
+                 xerr = x_error, 
+                 fmt=' ',
+                 elinewidth=1,
+                 capsize=5,
+                 errorevery=100, 
+                 capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα """
 
 
     return temp_press_out_figure
@@ -164,7 +164,7 @@ def temp_press_in_plot(df):
     return temp_press_in_figure
 
 #FLOATING TIME BASICS
-def O3_time(df):
+""" def O3_time(df):
     
     O3_conc_figure, ax5 = plt.subplots()
     
@@ -197,4 +197,19 @@ def CO2_time(df):
     ax6.legend()
     plt.tight_layout()
 
-    return CO2_conc_figure
+    return CO2_conc_figure """
+
+def sb_pump_time(df):
+    sb_pump_time_figure, ax9 = plt.subplots()
+    
+    ax9.scatter(df['time'],df['T_Pump'], s=20, c='#0000FF', marker= '.', label = "Pump Temperature")
+    ax9.scatter(df['time'],df['T_SB'], s=20, c='#FF0000', marker= '.', label = "Sensor Box Temperature")
+    
+    ax9.set_title("Pump & SB Temperatures")
+    ax9.set_ylabel("Temperature in (°C)")
+    ax9.set_xlabel("Time (sec)")
+    ax9.legend()
+
+    plt.tight_layout()
+
+    return sb_pump_time_figure
