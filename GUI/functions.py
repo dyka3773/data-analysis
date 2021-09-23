@@ -84,34 +84,31 @@ def centre_of_mass(df): #Το όρισμα θα είναι ένας πίνακα
 def O3ConcentrationA(df):
     O3_WE = df.O3_WE_a
     O3_AE = df.O3_AE_a
-    T_in = df.T_in  # σημαντικη για τις τιμες που θα χρησιμοποιηθουν στις σταθερες
+    T_in = df.T_in
     
-    # a = 1.3 # correction factor, εξαρταται απο θερμοκρασια μετρησης και σχετιζεται με τις επιφανειες των 2 μετρητων; 
-    a = -4e-11*T_in**6 + 6e-9*T_in**5 + 2e-7*T_in**4 - 1e-5*T_in**3 - 2e-6*T_in**2 + 0.0253*T_in + 1.2669
-    # Πολυωνυμικό fitting απο το Excel, πιό μεγάλο R^2 απο το εκθετικό (0,9995), προέκυψε απο τον πίνακα με τις τιμές στο SED 
-    WEe = 37
-    AEe = 25
+    a =  -1*10**(-5)*T_in**3 + 6e-5*T_in**2 + 0.0255*T_in + 1.2683
+    WEe = 0.6
+    AEe = 0.6
     b = 1 # η σταθερα που συνδεει συγκεντρωση και διορθωμενη μετρηση ρευματος, δεν ξερω ενδεικτικες τιμες, υπολογιζεται στο calibration
     WEc = O3_WE - WEe - a*(O3_AE - AEe)
     
     """Fitting & a=a(T_in)"""
-    return b * WEc      
+    return b * WEc + 4.5    
 
 
 def O3ConcentrationB(df):
     O3_WE = df.O3_WE_b
     O3_AE = df.O3_AE_b
-    T_in = df.T_in  # σημαντικη για τις τιμες που θα χρησιμοποιηθουν στις σταθερες
+    T_in = df.T_in
     
-    # a = 1.3 # correction factor, εξαρταται απο θερμοκρασια μετρησης και σχετιζεται με τις επιφανειες των 2 μετρητων; 
-    a = -4e-11*T_in**6 + 6e-9*T_in**5 + 2e-7*T_in**4 - 1e-5*T_in**3 - 2e-6*T_in**2 + 0.0253*T_in + 1.2669
-    WEe = 37
-    AEe = 25
+    a =  -1*10**(-5)*T_in**3 + 6e-5*T_in**2 + 0.0255*T_in + 1.2683
+    WEe = 0.6
+    AEe = 0.6
     b = 1 # η σταθερα που συνδεει συγκεντρωση και διορθωμενη μετρηση ρευματος, δεν ξερω ενδεικτικες τιμες, υπολογιζεται στο calibration
     WEc = O3_WE - WEe - a*(O3_AE - AEe)
     
     """Fitting & a=a(T_in)"""
-    return b * WEc 
+    return b * WEc + 4.5
 
 
 def CO2ConcentrationA(df):
@@ -119,8 +116,8 @@ def CO2ConcentrationA(df):
     CO2_V2 = df.CO2_V2_a
     T_in = df.T_in
     
-    a= 2.49
-    n= 0.811 # linearization coefficients υπολογιστουν στα tests (me fittings)
+    a = 2.49
+    n = 0.811 # linearization coefficients υπολογιστουν στα tests (me fittings)
     Z = 1.33 
     S = 0.4408   # Zero και Span , θα υπολογιστούν οταν γίνουν τα test (me fittings)
     Tcal = 19.78 # kata protimhsh 20
@@ -151,8 +148,8 @@ def CO2ConcentrationB(df):
     CO2_V2 = df.CO2_V2_b
     T_in = df.T_in
     
-    a= 2.49
-    n= 0.811 # linearization coefficients υπολογιστουν στα tests (me fittings)
+    a = 2.49
+    n = 0.811 # linearization coefficients υπολογιστουν στα tests (me fittings)
     Z = 1.33 
     S = 0.4408   # Zero και Span , θα υπολογιστούν οταν γίνουν τα test (me fittings)
     Tcal = 19.78 # kata protimhsh 20

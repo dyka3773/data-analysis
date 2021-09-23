@@ -92,12 +92,12 @@ def O3_conc(df):
     # ax5.grid(linewidth= 0.5, linestyle= '--', color= '#262626', alpha= 0.2)
     # plt.rcParams['axes.facecolor'] = '#ccccff'
     ax5.scatter(df['O3_ppm_a'], df['Altitude'], s=20,marker= '.', c='#0000FF',
-                  label = "ECO-WISE 2021")
+                  label = "Sensor A")
     ax5.scatter(df['O3_ppm_b'], df['Altitude'], s=20,marker= '.', c='#FF0000',
-                  label = "ECO-WISE 2021")
+                  label = "Sensor B")
     
     ax5.set_title("O3 concentration")
-    ax5.set_xlabel("O3 (ppb)")
+    ax5.set_xlabel("O3 (Arbitrary units ~ ppb)")
     ax5.set_ylabel("Altitude (m)")
     ax5.legend()
     plt.tight_layout()
@@ -116,7 +116,7 @@ def CO2_conc(df):
                 marker= '.', label = "Sensor B")
     
     ax6.set_title("CO2 concentration")
-    ax6.set_xlabel("CO2 (v/v %)")
+    ax6.set_xlabel("CO2 (Arbitrary units ~ 0.5 v/v %)")
     ax6.set_ylabel("Altitude (m)")
     ax6.legend()
     plt.tight_layout()
