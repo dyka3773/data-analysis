@@ -76,7 +76,7 @@ def humidity_plot(df):
     hum_in.set_ylabel("Humidity Inside (%)")  
     hum_in.legend()
     
-    hum_out.set_xlabel("Time (min)")
+    hum_out.set_xlabel("Time (CEST)")
     hum_out.set_ylabel("Humidity Outside (%)")   
     hum_out.legend()
     
@@ -111,9 +111,9 @@ def CO2_conc(df):
     
     plt.style.use('seaborn')
     ax6.scatter(df['CO2_C_a'], df['Altitude'], s=20, c='#0000FF',
-                marker= '.', label = "ECO-WISE 2021")
+                marker= '.', label = "Sensor A")
     ax6.scatter(df['CO2_C_b'], df['Altitude'], s=20, c='#FF0000',
-                marker= '.', label = "ECO-WISE 2021")
+                marker= '.', label = "Sensor B")
     
     ax6.set_title("CO2 concentration")
     ax6.set_xlabel("CO2 (v/v %)")
@@ -136,7 +136,7 @@ def altitude_time(df):
     altitude_time_figure.colorbar(plot, ax=ax7,label = 'Temperature out (°C)')
     
     ax7.set_title("Balloon altitude (Altitude Over Time)")
-    ax7.set_xlabel("Time (min)")
+    ax7.set_xlabel("Time (CEST)")
     ax7.set_ylabel("Altitude (m)")
     ax7.legend()
     plt.tight_layout()
@@ -156,7 +156,7 @@ def temp_press_in_plot(df):
     temp_press_in_figure.colorbar(plot, ax=ax8,label = 'Temperature in (°C)')
     
     ax8.set_title("Sensor box variables")
-    ax8.set_xlabel("Time (sec)")
+    ax8.set_xlabel("Time (CEST)")
     ax8.set_ylabel("Pressure (mbar)")
     ax8.legend()
     plt.tight_layout()
@@ -207,7 +207,7 @@ def sb_pump_time(df):
     
     ax9.set_title("Pump & SB Temperatures")
     ax9.set_ylabel("Temperature in (°C)")
-    ax9.set_xlabel("Time (sec)")
+    ax9.set_xlabel("Time (CEST)")
     ax9.legend()
 
     plt.tight_layout()
