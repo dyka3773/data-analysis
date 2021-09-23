@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 
 
-def flow_rate_plot(df):
+""" def flow_rate_plot(df):
     plt.style.use('seaborn')
     
     flow_rate_figure, ax1 = plt.subplots()
@@ -16,7 +16,7 @@ def flow_rate_plot(df):
     ax1.legend()
     plt.tight_layout()
     
-    return flow_rate_figure
+    return flow_rate_figure """
 
 
 def temp_press_out_plot(df):
@@ -40,7 +40,7 @@ def temp_press_out_plot(df):
     
     #ERRORS
     
-    p = 1/100 #ποσοστό σφάλματος στην πίεση
+    """ p = 1/100 #ποσοστό σφάλματος στην πίεση
     
     y_errormin = p*df['P_out']
     y_errormax = p*df['P_out']
@@ -56,7 +56,7 @@ def temp_press_out_plot(df):
                  elinewidth=1,
                  capsize=5,
                  errorevery=100, 
-                 capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα
+                 capthick=1)  #ERROR EVERY για να φαίνεται στο γράφημα """
 
 
     return temp_press_out_figure
@@ -76,7 +76,7 @@ def humidity_plot(df):
     hum_in.set_ylabel("Humidity Inside (%)")  
     hum_in.legend()
     
-    hum_out.set_xlabel("Time (min)")
+    hum_out.set_xlabel("Time (CEST)")
     hum_out.set_ylabel("Humidity Outside (%)")   
     hum_out.legend()
     
@@ -111,9 +111,9 @@ def CO2_conc(df):
     
     plt.style.use('seaborn')
     ax6.scatter(df['CO2_C_a'], df['Altitude'], s=20, c='#0000FF',
-                marker= '.', label = "ECO-WISE 2021")
+                marker= '.', label = "Sensor A")
     ax6.scatter(df['CO2_C_b'], df['Altitude'], s=20, c='#FF0000',
-                marker= '.', label = "ECO-WISE 2021")
+                marker= '.', label = "Sensor B")
     
     ax6.set_title("CO2 concentration")
     ax6.set_xlabel("CO2 (v/v %)")
@@ -136,7 +136,7 @@ def altitude_time(df):
     altitude_time_figure.colorbar(plot, ax=ax7,label = 'Temperature out (°C)')
     
     ax7.set_title("Balloon altitude (Altitude Over Time)")
-    ax7.set_xlabel("Time (min)")
+    ax7.set_xlabel("Time (CEST)")
     ax7.set_ylabel("Altitude (m)")
     ax7.legend()
     plt.tight_layout()
@@ -156,7 +156,7 @@ def temp_press_in_plot(df):
     temp_press_in_figure.colorbar(plot, ax=ax8,label = 'Temperature in (°C)')
     
     ax8.set_title("Sensor box variables")
-    ax8.set_xlabel("Time (sec)")
+    ax8.set_xlabel("Time (CEST)")
     ax8.set_ylabel("Pressure (mbar)")
     ax8.legend()
     plt.tight_layout()
@@ -164,7 +164,7 @@ def temp_press_in_plot(df):
     return temp_press_in_figure
 
 #FLOATING TIME BASICS
-def O3_time(df):
+""" def O3_time(df):
     
     O3_conc_figure, ax5 = plt.subplots()
     
@@ -197,4 +197,19 @@ def CO2_time(df):
     ax6.legend()
     plt.tight_layout()
 
-    return CO2_conc_figure
+    return CO2_conc_figure """
+
+def sb_pump_time(df):
+    sb_pump_time_figure, ax9 = plt.subplots()
+    
+    ax9.scatter(df['time'],df['T_Pump'], s=20, c='#0000FF', marker= '.', label = "Pump Temperature")
+    ax9.scatter(df['time'],df['T_SB'], s=20, c='#FF0000', marker= '.', label = "Sensor Box Temperature")
+    
+    ax9.set_title("Pump & SB Temperatures")
+    ax9.set_ylabel("Temperature in (°C)")
+    ax9.set_xlabel("Time (CEST)")
+    ax9.legend()
+
+    plt.tight_layout()
+
+    return sb_pump_time_figure
