@@ -5,6 +5,7 @@ Created on Wed Mar  3 21:48:25 2021
 @author: iliodis
 """
 from pandas import Series
+# import pandas as pd
 import numpy as np
 
 V_in = 2
@@ -174,3 +175,30 @@ def CO2ConcentrationB(df):
     else:
         result = -((1/a)*np.log(1-((1-NRcomp)*(-1/Scomp))))**(1/n)
     return result
+
+""" def CO2Conc(df_asc):
+    listA = []
+    listB = []
+
+    for i in range(len(df_asc['time'])):
+        try:
+            mean_temp = df_asc.loc[i-60:i,'T_in'].mean()
+
+            D_V1_a = df_asc.loc[i-60:i,'CO2_V1_a'].max() - df_asc.loc[i-60:i,'CO2_V1_a'].min()
+            D_V2_a = df_asc.loc[i-60:i,'CO2_V2_a'].max() - df_asc.loc[i-60:i,'CO2_V2_a'].min()
+            
+            D_V1_b = df_asc.loc[i-60:i,'CO2_V1_b'].max() - df_asc.loc[i-60:i,'CO2_V1_b'].min()
+            D_V2_b = df_asc.loc[i-60:i,'CO2_V2_b'].max() - df_asc.loc[i-60:i,'CO2_V2_b'].min()
+
+            df_new = pd.DataFrame([[mean_temp,D_V1_a,D_V2_a]], columns=['T_in', 'CO2_V1_a', 'CO2_V2_a'])
+            listA.append(CO2ConcentrationA(df_new))
+
+            df_new = pd.DataFrame([[mean_temp,D_V1_b,D_V2_b]], columns=['T_in', 'CO2_V1_b', 'CO2_V2_b'])
+            listB.append(CO2ConcentrationB(df_new))
+        except:
+            listA.append(None)
+            listB.append(None)
+
+
+    return Series(listA, dtype='float64'), Series(listB, dtype='float64') """
+    
