@@ -5,7 +5,7 @@ Created on Wed Mar  3 21:48:25 2021
 @author: iliodis
 """
 from pandas import Series
-# import pandas as pd
+import pandas as pd
 import numpy as np
 
 V_in = 2
@@ -119,8 +119,10 @@ def CO2ConcentrationA(df):
     
     a = 2.49
     n = 0.811 # linearization coefficients υπολογιστουν στα tests (me fittings)
-    Z = 1.33 
-    S = 0.4408   # Zero και Span , θα υπολογιστούν οταν γίνουν τα test (me fittings)
+    # Z = 1.33
+    Z = 1 
+    # S = 0.4408   # Zero και Span , θα υπολογιστούν οταν γίνουν τα test (me fittings)
+    S = 3
     Tcal = 19.78 # kata protimhsh 20
     apos = 0.000556
     aneg = 0.000438
@@ -145,14 +147,16 @@ def CO2ConcentrationA(df):
     return result
 
 def CO2ConcentrationB(df):
-    CO2_V1 = df.CO2_V1_b
-    CO2_V2 = df.CO2_V2_b
+    CO2_V1 = df.CO2_V2_b
+    CO2_V2 = df.CO2_V1_b
     T_in = df.T_in
     
     a = 2.49
     n = 0.811 # linearization coefficients υπολογιστουν στα tests (me fittings)
-    Z = 1.33 
-    S = 0.4408   # Zero και Span , θα υπολογιστούν οταν γίνουν τα test (me fittings)
+    # Z = 1.33
+    Z = 1
+    # S = 0.4408   # Zero και Span , θα υπολογιστούν οταν γίνουν τα test (me fittings)
+    S = 1.7
     Tcal = 19.78 # kata protimhsh 20
     apos = 0.000556
     aneg = 0.000438
@@ -175,30 +179,45 @@ def CO2ConcentrationB(df):
     else:
         result = -((1/a)*np.log(1-((1-NRcomp)*(-1/Scomp))))**(1/n)
     return result
-
-""" def CO2Conc(df_asc):
-    listA = []
-    listB = []
-
-    for i in range(len(df_asc['time'])):
-        try:
-            mean_temp = df_asc.loc[i-60:i,'T_in'].mean()
-
-            D_V1_a = df_asc.loc[i-60:i,'CO2_V1_a'].max() - df_asc.loc[i-60:i,'CO2_V1_a'].min()
-            D_V2_a = df_asc.loc[i-60:i,'CO2_V2_a'].max() - df_asc.loc[i-60:i,'CO2_V2_a'].min()
-            
-            D_V1_b = df_asc.loc[i-60:i,'CO2_V1_b'].max() - df_asc.loc[i-60:i,'CO2_V1_b'].min()
-            D_V2_b = df_asc.loc[i-60:i,'CO2_V2_b'].max() - df_asc.loc[i-60:i,'CO2_V2_b'].min()
-
-            df_new = pd.DataFrame([[mean_temp,D_V1_a,D_V2_a]], columns=['T_in', 'CO2_V1_a', 'CO2_V2_a'])
-            listA.append(CO2ConcentrationA(df_new))
-
-            df_new = pd.DataFrame([[mean_temp,D_V1_b,D_V2_b]], columns=['T_in', 'CO2_V1_b', 'CO2_V2_b'])
-            listB.append(CO2ConcentrationB(df_new))
-        except:
-            listA.append(None)
-            listB.append(None)
-
-
-    return Series(listA, dtype='float64'), Series(listB, dtype='float64') """
     
+def preConc(df):
+    
+    j = 0
+
+    list = []
+    alt_list = []
+
+    column_names = ['T_in', 'CO2_V1_a', 'CO2_V2_a', 'CO2_V1_b', 'CO2_V2_b']
+    
+    df_new = pd.DataFrame(columns = column_names)
+
+    for row in df['valve_2']:
+        try:
+            if (df.loc[j,'valve_2']-df.loc[j+1,'valve_2'] == 1) :
+                list.append(j+1)
+                alt_list.append(df.loc[j,'Altitude'])
+        except:
+            continue
+
+        j +=1
+
+    for k in list:
+        t_in = df.loc[k:k+20,'T_in'].mean()
+        v1_a = df.loc[k:k+20,'CO2_V1_a'].max() - df.loc[k:k+20,'CO2_V1_a'].min()
+        v2_a = df.loc[k:k+20,'CO2_V2_a'].max() - df.loc[k:k+20,'CO2_V2_a'].min()
+
+        v1_b = df.loc[k:k+20,'CO2_V1_b'].max() - df.loc[k:k+20,'CO2_V1_b'].min()
+        v2_b = df.loc[k:k+20,'CO2_V2_b'].max() - df.loc[k:k+20,'CO2_V2_b'].min()
+
+        df1 = pd.DataFrame([[t_in, v1_a, v2_a, v1_b, v2_b]], columns = column_names)
+
+        df_new = pd.concat([df1, df_new], ignore_index=True)
+
+    df_new['CO2_C_a'] = df_new['CO2_C_b'] = None
+
+    df_new['CO2_C_a'] = df_new.apply(CO2ConcentrationA, axis=1)
+    df_new['CO2_C_b'] = df_new.apply(CO2ConcentrationB, axis=1)
+
+    df_new['Altitude'] = alt_list
+
+    return df_new
