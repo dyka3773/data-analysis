@@ -135,6 +135,9 @@ def altitude_time(df):
     
     altitude_time_figure.colorbar(plot, ax=ax7,label = 'Temperature out (°C)')
     
+    dt = df.loc[0, 'time'] - df.loc[15526, 'time']
+    plt.xlim(df.loc[0, 'time'] + dt*0.02, df.loc[15526, 'time'] - dt*0.02)
+    
     ax7.set_title("Balloon altitude (Altitude Over Time)")
     ax7.set_xlabel("Time (CEST)")
     ax7.set_ylabel("Altitude (m)")
@@ -154,6 +157,11 @@ def temp_press_in_plot(df):
                 marker= '.', label = "ECO-WISE 2021")
     
     temp_press_in_figure.colorbar(plot, ax=ax8,label = 'Temperature in (°C)')
+    
+    
+    dt = df.loc[0, 'time'] - df.loc[15526, 'time']
+    plt.xlim(df.loc[0, 'time'] + dt*0.02, df.loc[15526, 'time'] - dt*0.02)
+    
     
     ax8.set_title("Sensor box variables")
     ax8.set_xlabel("Time (CEST)")
@@ -204,6 +212,9 @@ def sb_pump_time(df):
     
     ax9.scatter(df['time'],df['T_Pump'], s=20, c='#0000FF', marker= '.', label = "Pump Temperature")
     ax9.scatter(df['time'],df['T_SB'], s=20, c='#FF0000', marker= '.', label = "Sensor Box Temperature")
+    
+    dt = df.loc[0, 'time'] - df.loc[15526, 'time']
+    plt.xlim(df.loc[0, 'time'] + dt*0.02, df.loc[15526, 'time'] - dt*0.02)
     
     ax9.set_title("Pump & SB Temperatures")
     ax9.set_ylabel("Temperature in (°C)")
