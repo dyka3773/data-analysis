@@ -135,8 +135,8 @@ def altitude_time(df):
     
     altitude_time_figure.colorbar(plot, ax=ax7,label = 'Temperature out (°C)')
     
-    dt = df.loc[0, 'time'] - df.loc[15526, 'time']
-    plt.xlim(df.loc[0, 'time'] + dt*0.02, df.loc[15526, 'time'] - dt*0.02)
+    #dt = df.loc[0, 'time'] - df.loc[15526, 'time']
+    #plt.xlim(df.loc[0, 'time'] + dt*0.02, df.loc[15526, 'time'] - dt*0.02)
     
     ax7.set_title("Balloon altitude (Altitude Over Time)")
     ax7.set_xlabel("Time (CEST)")
@@ -159,8 +159,8 @@ def temp_press_in_plot(df):
     temp_press_in_figure.colorbar(plot, ax=ax8,label = 'Temperature in (°C)')
     
     
-    dt = df.loc[0, 'time'] - df.loc[15526, 'time']
-    plt.xlim(df.loc[0, 'time'] + dt*0.02, df.loc[15526, 'time'] - dt*0.02)
+    #dt = df.loc[512, 'time'] - df.loc[6290, 'time']
+    #plt.xlim(df.loc[512, 'time'] + dt*0.02, df.loc[6290, 'time'] - dt*0.02)
     
     
     ax8.set_title("Sensor box variables")
