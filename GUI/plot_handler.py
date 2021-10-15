@@ -1,6 +1,10 @@
 from matplotlib import pyplot as plt
 
 
+
+init = 0
+fin = 14022
+
 """ def flow_rate_plot(df):
     plt.style.use('seaborn')
     
@@ -31,6 +35,8 @@ def temp_press_out_plot(df):
                   label = "ECO-WISE 2021",marker= '.')
     temp_press_out_figure.colorbar(plot, ax=ax3,label = 'Temperature out (°C)')
     
+    #dt = df.loc[init, 'time'] - df.loc[fin, 'time']
+    #plt.xlim(df.loc[init, 'time'] + dt*0.02, df.loc[fin, 'time'] - dt*0.02)
     
     ax3.set_title("Environmental variables")
     ax3.set_xlabel("Pressure (mbar)")
@@ -135,8 +141,8 @@ def altitude_time(df):
     
     altitude_time_figure.colorbar(plot, ax=ax7,label = 'Temperature out (°C)')
     
-    #dt = df.loc[0, 'time'] - df.loc[15526, 'time']
-    #plt.xlim(df.loc[0, 'time'] + dt*0.02, df.loc[15526, 'time'] - dt*0.02)
+    dt = df.loc[init, 'time'] - df.loc[fin, 'time']
+    plt.xlim(df.loc[init, 'time'] + dt*0.02, df.loc[fin, 'time'] - dt*0.02)
     
     ax7.set_title("Balloon altitude (Altitude Over Time)")
     ax7.set_xlabel("Time (CEST)")
@@ -159,8 +165,8 @@ def temp_press_in_plot(df):
     temp_press_in_figure.colorbar(plot, ax=ax8,label = 'Temperature in (°C)')
     
     
-    #dt = df.loc[512, 'time'] - df.loc[6290, 'time']
-    #plt.xlim(df.loc[512, 'time'] + dt*0.02, df.loc[6290, 'time'] - dt*0.02)
+    dt = df.loc[init, 'time'] - df.loc[fin, 'time']
+    plt.xlim(df.loc[init, 'time'] + dt*0.02, df.loc[fin, 'time'] - dt*0.02)
     
     
     ax8.set_title("Sensor box variables")
@@ -209,12 +215,13 @@ def CO2_time(df):
 
 def sb_pump_time(df):
     sb_pump_time_figure, ax9 = plt.subplots()
-    
+    plt.style.use('seaborn')
     ax9.scatter(df['time'],df['T_Pump'], s=20, c='#0000FF', marker= '.', label = "Pump Temperature")
     ax9.scatter(df['time'],df['T_SB'], s=20, c='#FF0000', marker= '.', label = "Sensor Box Temperature")
     
-    dt = df.loc[0, 'time'] - df.loc[15526, 'time']
-    plt.xlim(df.loc[0, 'time'] + dt*0.02, df.loc[15526, 'time'] - dt*0.02)
+    
+    dt = df.loc[init, 'time'] - df.loc[fin, 'time']
+    plt.xlim(df.loc[init, 'time'] + dt*0.02, df.loc[fin, 'time'] - dt*0.02)
     
     ax9.set_title("Pump & SB Temperatures")
     ax9.set_ylabel("Temperature in (°C)")
