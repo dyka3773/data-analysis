@@ -1,4 +1,48 @@
 
+
+Complete listing of Fine Structure file
+File:  D:\SoundingArchive\Sonde2021\Ball09\PTU\20210929\Esrange_20210929_071127_EDT_PTULevels.tsv
+
+Started at       29 September 2021  7:11 UTC
+
+Station  :       Esrange
+Location :       67.89 N 21.08 E       335 m/MSL
+
+RS type       :  RS41-SGP
+RS-number     :  R5020121
+Sounding processor serial number: 0
+
+
+Ground check  :     Ref     RS   Corr
+
+  Pressure    :   989.8  988.0    1.8
+  Temperature :   /////  /////  /////
+  Humidity    :   /////  /////  /////
+
+Clouds    : /////
+Special 1 : /////
+Special 2 : /////
+
+Telemetry noise level  :  100 %
+
+                 P      T      U
+Accepted (%) : /////  /////  /////
+Replaced (%) : /////  /////  /////
+Rejected (%) : /////  /////  /////
+
+GPS data quality
+    Valid raw wind ratio        :  ///// %
+    Valid raw wind on 5 ratio   :  ///// %
+    Invalid raw wind on 4 ratio :  ///// %
+    Poor PDOP ratio             :  ///// %
+    Unidentified signals ratio  :  ///// %
+    Mean satellite track count  :  /////
+    Mean track count valid      :  /////
+    Gaps over 1 min             :  ///// min
+
+
+Reason for termination : WeakOrFadingSignal
+
    Time Pressure   Height  Temperature  RH   Dewp   Significance flags
 
  min  s      hPa      gpm     deg C      %  deg C  Automatic  Operator
