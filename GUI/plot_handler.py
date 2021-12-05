@@ -2,7 +2,7 @@ from matplotlib import pyplot as plt
 
 
 
-init = 0
+init = 6290
 fin = 14022
 
 """ def flow_rate_plot(df):
@@ -38,7 +38,7 @@ def temp_press_out_plot(df):
     #dt = df.loc[init, 'time'] - df.loc[fin, 'time']
     #plt.xlim(df.loc[init, 'time'] + dt*0.02, df.loc[fin, 'time'] - dt*0.02)
     
-    ax3.set_title("Environmental variables")
+    ax3.set_title("Ecobox variables ")
     ax3.set_xlabel("Pressure (mbar)")
     ax3.set_ylabel("Altitude (m)")
     ax3.legend()
@@ -82,7 +82,7 @@ def humidity_plot(df):
     hum_in.set_ylabel("Humidity Inside (%)")  
     hum_in.legend()
     
-    hum_out.set_xlabel("Time (CEST)")
+    hum_out.set_xlabel("Time (mins)")
     hum_out.set_ylabel("Humidity Outside (%)")   
     hum_out.legend()
     
@@ -145,7 +145,7 @@ def altitude_time(df):
     plt.xlim(df.loc[init, 'time'] + dt*0.02, df.loc[fin, 'time'] - dt*0.02)
     
     ax7.set_title("Balloon altitude (Altitude Over Time)")
-    ax7.set_xlabel("Time (CEST)")
+    ax7.set_xlabel("Time (mins)")
     ax7.set_ylabel("Altitude (m)")
     ax7.legend()
     plt.tight_layout()
@@ -170,7 +170,7 @@ def temp_press_in_plot(df):
     
     
     ax8.set_title("Sensor box variables")
-    ax8.set_xlabel("Time (CEST)")
+    ax8.set_xlabel("Time (mins)")
     ax8.set_ylabel("Pressure (mbar)")
     ax8.legend()
     plt.tight_layout()
@@ -225,7 +225,7 @@ def sb_pump_time(df):
     
     ax9.set_title("Pump & SB Temperatures")
     ax9.set_ylabel("Temperature in (°C)")
-    ax9.set_xlabel("Time (CEST)")
+    ax9.set_xlabel("Time (mins)")
     ax9.legend()
 
     plt.tight_layout()
