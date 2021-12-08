@@ -12,12 +12,13 @@ field_names = [
                 'O3_AE_b', 'O3_WE_b',   #16,17
                 'CO2_V1_a', 'CO2_V2_a',   #18,19
                 'CO2_V1_b', 'CO2_V2_b',   #20,21
+                'Cycle',    #23
                 'stage_1'   #36
                ]
 
-cols_to_use = [0,1,2,3,5,7,8,9,10,13,14,15,16,17,18,19,20,21,37]
+cols_to_use = [0,1,2,3,5,7,8,9,10,13,14,15,16,17,18,19,20,21,23,38]
 
-PATH = './real_data_csv.csv'
+PATH = '../real_data_csv.csv'
 
 df = pd.read_csv(PATH,
                         names = field_names,
@@ -36,4 +37,4 @@ df_new = df.loc[df['stage_1'] == 1]
 # plt.scatter(df_new['time'],df_new['P_in'])
 # plt.show()
 
-df_new.to_excel("teliko excelaki.xlsx")
+df_new.to_excel("testarw kati bro.xlsx")
