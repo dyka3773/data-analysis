@@ -1,9 +1,13 @@
 import pandas as pd
 import csv
 
-tsv1 = pd.read_csv("testing.csv")
+FILENAME = "C:/Users/HerculesKonsoulas/OneDrive/Random Stuff/Programming_Random/Δημήτρης/NASA's data.tsv"
+CSV_FILENAME = "./Nasa's data.csv"
+DEST_FILENAME = "./Nasa's data.xlsx"
 
-# print(tsv1)
+# tsv1 = pd.read_csv(FILENAME, sep='\t', header=None)
+
+# # print(tsv1)
 
 # list =[]
 
@@ -13,17 +17,22 @@ tsv1 = pd.read_csv("testing.csv")
 
 # # print(list)
 
-# with open('testing.csv', 'w', newline='') as f:
+# with open(CSV_FILENAME, 'w', newline='') as f:
       
 #     # using csv.writer method from CSV package
 #     write = csv.writer(f)
 
-#     string = " min  s      hPa      gpm     deg_C      hum  deg_C  Automatic  Operator  flag1   flag2"
+#     string = "ElapTime(s) Press(hPa) GeopHgt(m) Temp(K)  RH(%)   PO3(mPa)    DD(degE)    FF(m/s)  GPSHgt(m)     Lon(degE)     Lat(degN)   PmpT(K)     Ozi(uA)  Vpmp(V)    Ipmp(mA)"
 
 #     write.writerow(string.split())
 
 #     for listItem in list:
 #         write.writerow(listItem)
     
+""" UNCOMMENT ONE PART AT A TIME """
 
-tsv1.to_excel("BX31_Esrange_20210929_071127_EDT_PTULevels.xlsx")
+# csv = pd.read_csv(CSV_FILENAME)
+
+# # print(csv)
+
+# csv.to_excel(DEST_FILENAME)
